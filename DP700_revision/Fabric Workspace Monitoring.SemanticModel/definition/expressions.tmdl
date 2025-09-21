@@ -1,0 +1,71 @@
+/// Copy the Cluster/Query URI of the Eventhouse/Monitoring KQL database.
+expression 'Query URI' = "https://trd-p8ag0q3m59thv2xzgd.z7.kusto.fabric.microsoft.com" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: d6e9abb2-bdd1-47ed-b240-4067a94ef2ce
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Text
+
+	annotation PBI_NavigationStepName = Navigation
+
+/// The offset in hours from UTC time. You can enter part hours, for example 5.5 for India.
+expression 'UTC Offset Hours' = 2 meta [IsParameterQuery=true, List={-4, -3, -2, -1, 0, 1, 2, 3, 4}, DefaultValue=0, Type="Number", IsParameterQueryRequired=false]
+	lineageTag: b66254e3-404c-4297-965c-5c9c7d8a0114
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Number
+
+	annotation PBI_NavigationStepName = Navigation
+
+/// Optionally enter a fabric item Id.
+expression 'Fabric Item Id' = null meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=false]
+	lineageTag: 774d6ea6-d213-4425-9467-a5535c9761be
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Null
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression _ItemId = if #"Fabric Item Id" is null then "" else #"Fabric Item Id"
+	lineageTag: d859ee2e-1a55-4531-9582-d09f4c6ddfc9
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Text
+
+	annotation PBI_NavigationStepName = Navigation
+
+/// From how many days ago should the report start loading data? (For example: 30,28,21,14,7)
+expression 'Days Ago To Start' = 7 meta [IsParameterQuery=true, List={30, 28, 21, 14, 7}, DefaultValue=7, Type="Number", IsParameterQueryRequired=true]
+	lineageTag: 9e2fcce4-928f-467a-bc65-48a0b76c5240
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Number
+
+	annotation PBI_NavigationStepName = Navigation
+
+/// Until how many days ago should the report stop loading data? (For example: 0,7,14,21 use 0 for today)
+expression 'Days Ago To Finish' = 0 meta [IsParameterQuery=true, List={21, 14, 7, 0}, DefaultValue=0, Type="Number", IsParameterQueryRequired=true]
+	lineageTag: 63eb1048-2e3e-4e6e-98f3-76716bb62a0a
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Number
+
+	annotation PBI_NavigationStepName = Navigation
+
+/// Optional. Same format as the computer's system time.
+expression RangeStart = null meta [IsParameterQuery=true, Type="DateTime", IsParameterQueryRequired=false]
+	lineageTag: 9482808b-565a-4ed4-838e-2f0aacf7d61b
+	queryGroup: Parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Null
+
+/// Optional. Same format as the computer's system time.
+expression RangeEnd = null meta [IsParameterQuery=true, Type="DateTime", IsParameterQueryRequired=false]
+	lineageTag: 0d5f4155-cb51-468e-b856-c806f15db250
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Null
+
+	annotation PBI_NavigationStepName = Navigation
+

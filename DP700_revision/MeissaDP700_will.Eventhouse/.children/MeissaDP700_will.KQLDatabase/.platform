@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLDatabase",
+    "displayName": "MeissaDP700_will",
+    "description": "MeissaDP700_will"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a814be39-c606-9d76-4c64-ddf708f6a29d"
+  }
+}

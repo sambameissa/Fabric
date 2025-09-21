@@ -1,0 +1,41 @@
+table CopilotPromptHelpers
+	isHidden
+	lineageTag: bc1e969b-5648-41e6-a71c-06971781e48c
+
+	column Question
+		dataType: string
+		isHidden
+		lineageTag: 2ac27bd6-7bea-4561-9a33-0a93028c65c2
+		summarizeBy: none
+		sourceColumn: Question
+		sortByColumn: QuestionId
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuestionId
+		dataType: string
+		lineageTag: 19979882-3752-41da-be79-e11c27f149c0
+		summarizeBy: none
+		sourceColumn: QuestionId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CopilotPromptHelpers = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("dZFNTsNADIWvYmUFUheF8rOsEEWoCySQWrEoXUwTN2ORzATbo6g7rsH1OAlOmmaDuhl5PP6en95sNtm7p9yDYO2CUg51LLASyF0SBE+lh8fXNSRxJULrMUBqCqcUynk2yW6y7eScgmOEPNZNFFIcmh1zd5YB7wTUI1QxlCgKjHtG8VAktpUxdPhtjz+YuE3aKQ19ogAFWBBjrm8J+WDkVzKFfuH9sDACCXAKwcyDVLEFm2EyOPJYqndqtoOkGsGZE4W47yLolK5GJXZhRHaoLVowH2k6neWr5ctTXxkeiv/NeBpcPKyG3hwudngMvFv/+/0jx6jrg/1D43LSA7R9NhxVKywuzcz1aOZopOijY2wiK7Skvr/TyQIFQdbT+/N6uYAuv8GB6c2y7fYP", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Question = _t, QuestionId = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Question", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

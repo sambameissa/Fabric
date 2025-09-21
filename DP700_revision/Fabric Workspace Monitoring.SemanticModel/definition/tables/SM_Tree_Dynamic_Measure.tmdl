@@ -1,0 +1,51 @@
+table SM_Tree_Dynamic_Measure
+	lineageTag: 6cddc9e6-8960-415b-bd48-e1b49dc1f094
+
+	column 'SM Dynamic Measure'
+		lineageTag: a5d5321d-fddd-4bd2-94a5-6093d2c71b9f
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'SM Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SM Parameter Fields'
+		isHidden
+		lineageTag: 24818005-3477-4a76-ad95-7932341ca12d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 91885c87-fc95-4a48-bf0e-8cb702be4856
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SM_Tree_Dynamic_Measure = calculated
+		mode: import
+		source =
+				{
+				    ("Operations", NAMEOF('Metrics'[SM Operations]), 0),
+				    ("Avg CPU Time", NAMEOF('Metrics'[Avg CPU Time]), 1),
+				    ("Avg Duration", NAMEOF('Metrics'[SM Avg Duration]), 2),
+				    ("Max Refresh Peak Memory", NAMEOF([Max Refresh Peak Memory]), 3),
+				    ("Max Query Peak Memory", NAMEOF([Max Query Peak Memory]), 4)
+				}
+
+	annotation PBI_Id = a4c1e024853f46b39c606f79b6bb2859
+

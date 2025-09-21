@@ -1,0 +1,47 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-CH
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup Parameters
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Semantic Models'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup Eventhouses
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup Units
+
+	annotation PBI_QueryGroupOrder = 3
+
+annotation PBIDesktopVersion = 2.145.1602.0 (25.07)+10647c9fa319b5e39936cdb21328038c371d1fe4
+
+annotation PBI_QueryOrder = ["Query URI","Days Ago To Start","Days Ago To Finish","UTC Offset Hours","Fabric Item Id","SM_ExecutionMetrics","SM_Progress_Report","EH_Queries","Calendar","RangeStart","RangeEnd","_ItemId","SizeUnits","TimeUnits","CopilotPromptHelpers"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table SM_Progress_Report
+ref table Calendar
+ref table SM_Semantic_Models
+ref table SM_ExecutionMetrics
+ref table SizeUnits
+ref table TimeUnits
+ref table EH_Queries
+ref table Metrics
+ref table SM_Progress_Field_Parameter
+ref table SM_Tree_Dynamic_Measure
+ref table EH_Tree_Dynamic_Measure
+ref table CopilotPromptHelpers
+
+ref cultureInfo en-US
+

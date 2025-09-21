@@ -1,0 +1,14 @@
+// KQL script
+// Use management commands in this script to configure your database items, such as tables, functions, materialized views, and more.
+
+
+.create-merge table Emptyracks (current_time:datetime, BikepointID:string, No_Bikes:long, No_Empty_Docks:long) 
+.create-merge table raw_bikes (BikepointID:string, Street:string, Neighbourhood:string, Latitude:real, Longitude:real, No_Bikes:int, No_Empty_Docks:int) 
+.create-or-alter table raw_bikes ingestion json mapping 'raw_bikes_mapping'
+```
+[{"Properties":{"Path":"$['BikepointID']"},"column":"BikepointID","datatype":""},{"Properties":{"Path":"$['Street']"},"column":"Street","datatype":""},{"Properties":{"Path":"$['Neighbourhood']"},"column":"Neighbourhood","datatype":""},{"Properties":{"Path":"$['Latitude']"},"column":"Latitude","datatype":""},{"Properties":{"Path":"$['Longitude']"},"column":"Longitude","datatype":""},{"Properties":{"Path":"$['No_Bikes']"},"column":"No_Bikes","datatype":""},{"Properties":{"Path":"$['No_Empty_Docks']"},"column":"No_Empty_Docks","datatype":""}]
+```
+.create-or-alter table raw_bikes ingestion json mapping 'raw_bikes_mapping_1'
+```
+[{"Properties":{"Path":"$['BikepointID']"},"column":"BikepointID","datatype":""},{"Properties":{"Path":"$['Street']"},"column":"Street","datatype":""},{"Properties":{"Path":"$['Neighbourhood']"},"column":"Neighbourhood","datatype":""},{"Properties":{"Path":"$['Latitude']"},"column":"Latitude","datatype":""},{"Properties":{"Path":"$['Longitude']"},"column":"Longitude","datatype":""},{"Properties":{"Path":"$['No_Bikes']"},"column":"No_Bikes","datatype":""},{"Properties":{"Path":"$['No_Empty_Docks']"},"column":"No_Empty_Docks","datatype":""}]
+```

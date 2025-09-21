@@ -1,0 +1,83 @@
+table TimeUnits
+	isHidden
+	excludeFromModelRefresh
+	lineageTag: c0f273e0-a212-43c4-a786-5102e83c64c1
+
+	measure SelectedTimeUnit = SELECTEDVALUE(TimeUnits[UnitValue])
+		formatString: 0
+		isHidden
+		lineageTag: 1945499e-b98d-40cf-aad6-6427d9ab1d5b
+
+		changedProperty = IsHidden
+
+	measure SelectedTimeUnitName = SELECTEDVALUE(TimeUnits[UnitShort])
+		lineageTag: 241d4dbe-2d41-4962-a075-e1f197e79735
+
+	column TimeUnitKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3d487fa5-a96c-4d5e-bbbc-6a03a89157ff
+		summarizeBy: count
+		sourceColumn: TimeUnitKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit
+		dataType: string
+		isHidden
+		lineageTag: 72001439-66fc-400a-a84e-8833eac45027
+		summarizeBy: none
+		sourceColumn: Unit
+		sortByColumn: TimeUnitKey
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitValue
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ff747313-ff06-4e0b-a9b7-06a83604811c
+		summarizeBy: sum
+		sourceColumn: UnitValue
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitShort
+		dataType: string
+		isHidden
+		lineageTag: 5ff0c1ec-6636-4acf-8d2d-e7c2d9e0f78a
+		summarizeBy: none
+		sourceColumn: UnitShort
+		sortByColumn: TimeUnitKey
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TimeUnits = m
+		mode: import
+		queryGroup: Units
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUcrNzMnJLE5Nzs9LKQZywULFSrE60UpGQCaShIGBAUQALGkM1ppXWpIKkjQzgMgCRcCyJkB2Rn5pEUjOGCwJks0oUoqNBQA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [TimeUnitKey = _t, Unit = _t, UnitValue = _t, UnitShort = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"TimeUnitKey", Int64.Type}, {"Unit", type text}, {"UnitValue", Int64.Type}, {"UnitShort", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

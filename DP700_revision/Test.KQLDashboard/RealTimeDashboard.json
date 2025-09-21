@@ -1,0 +1,72 @@
+{
+  "autoRefresh": {
+    "enabled": false
+  },
+  "baseQueries": [],
+  "tiles": [
+    {
+      "id": "ccf8af5b-f62a-4bf4-a738-522e758ae172",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "dc150314-9dc4-4042-a571-7c64a7b4012f"
+      },
+      "title": "Emptyracks Table Preview",
+      "visualType": "table",
+      "pageId": "3459eed9-c8fa-4b5a-b586-e02e31402d4c",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 6,
+        "height": 6
+      },
+      "visualOptions": {}
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "179a9354-3fe8-48ca-974f-11d17dcd8c9c",
+      "kind": "kusto-trident",
+      "clusterUri": "",
+      "database": "a814be39-c606-9d76-4c64-ddf708f6a29d",
+      "name": "MeissaDP700_will",
+      "scopeId": "kusto-trident",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "3459eed9-c8fa-4b5a-b586-e02e31402d4c"
+    }
+  ],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "34ece1ca-1614-4c14-99ff-b5741ea1279f",
+      "displayName": "Intervalle de temps",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "queries": [
+    {
+      "id": "dc150314-9dc4-4042-a571-7c64a7b4012f",
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "179a9354-3fe8-48ca-974f-11d17dcd8c9c"
+      },
+      "usedVariables": [],
+      "text": "['Emptyracks'] | take 10"
+    }
+  ],
+  "schema_version": 64
+}

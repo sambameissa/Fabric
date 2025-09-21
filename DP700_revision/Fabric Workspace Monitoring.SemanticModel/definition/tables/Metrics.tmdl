@@ -1,0 +1,1104 @@
+table Metrics
+	lineageTag: e39bc8e7-e0f4-4a30-ad98-dfab8219a99b
+
+	measure 'Data Source Throttling Count' = CALCULATE([SM Operations],SM_ExecutionMetrics[datasourceConnectionThrottleTimeMs]>0, SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Direct Query
+		lineageTag: bfe7946c-3aaa-49f7-ae00-f3f25a5ea545
+
+	measure 'Data Source Throttling Time' = CALCULATE(SUM(SM_ExecutionMetrics[datasourceConnectionThrottleTimeMs]), SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})/[SelectedTimeUnit]
+		formatString: 0
+		displayFolder: Semantic Models\Execution Metrics\Direct Query
+		lineageTag: 527056d6-0cb1-4807-a7a7-711fc147227a
+
+	measure 'Direct Query Connection Time' = CALCULATE(SUM(SM_ExecutionMetrics[directQueryConnectionTimeMs]), SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})/[SelectedTimeUnit]
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Direct Query
+		lineageTag: bcc532d7-5e38-4a71-90fb-1e5e51f1a09b
+
+	measure 'Direct Query Count' = CALCULATE( SUM(SM_ExecutionMetrics[directQueryRequestCount]), SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Direct Query
+		lineageTag: b9fb39e2-047d-416f-b26f-60b0b3506402
+
+	measure 'Direct Query Execution Time' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(SM_ExecutionMetrics[directQueryExecutionTimeMs]),
+			        SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"}
+			    ),
+			    [SelectedTimeUnit]
+			)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Direct Query
+		lineageTag: 83117df6-b9ad-4ab6-9fe1-f5d3c4632882
+
+	measure 'Direct Query Iteration Time' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(SM_ExecutionMetrics[directQueryIterationTimeMs]),
+			        SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"}
+			        ),
+			    [SelectedTimeUnit]
+			)
+		formatString: 0
+		displayFolder: Semantic Models\Execution Metrics\Direct Query
+		lineageTag: ffa1ed7b-f322-4f90-859d-3de79799a1f8
+
+	measure 'Direct Query Total Rows' =
+			
+			CALCULATE(
+			    SUM(SM_ExecutionMetrics[directQueryTotalRows]),
+			     SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"}
+			)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Direct Query
+		lineageTag: fec9e331-66aa-47e0-85fa-86df22cd0c63
+
+	measure 'Direct Query Total Time' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM(SM_ExecutionMetrics[directQueryTotalTimeMs]),
+			        SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"}
+			    ),
+			    [SelectedTimeUnit]
+			)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Direct Query
+		lineageTag: fe0e9e35-138f-4146-b22c-b2000943fcd6
+
+	measure 'Total Rows' = SUM(SM_ExecutionMetrics[vertipaqTotalRows])
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 76cf8bb0-58dd-4b64-9178-6a6be088bb5a
+
+	measure 'SequencePoint Duration' = SUM(SM_ExecutionMetrics[SequencePointMs])/[SelectedTimeUnit]
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 8af47ad6-835f-4028-9546-9fc9502e2173
+
+	measure 'Request with SequencePoint Count' = CALCULATE([Cmd Request],SM_ExecutionMetrics[SequencePointCount]>0)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: f7e23300-4431-4ee7-8bdc-1ec6bedc0273
+
+		changedProperty = FormatString
+
+	measure 'Refreshed DB' = CALCULATE( [Item], CROSSFILTER('SM_Semantic_Models'[ItemId],SM_ExecutionMetrics[ItemId],Both), SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 2b5784c5-0fd1-42d2-bdd0-75447455d400
+
+		changedProperty = FormatString
+
+	measure 'Refresh Peak Memory' = ```
+			
+			CALCULATE( 
+			    DIVIDE(SUM(SM_ExecutionMetrics[approximatePeakMemConsumptionKB]),[SelectedSizeUnit]),
+			    SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"}
+			)
+			```
+		formatString: #,0.00
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 2ba95a84-4e7e-4aaa-a1a7-1b018efd8602
+
+	measure 'Refresh Mashup Peak Memory' = ```
+			
+			CALCULATE( 
+			    DIVIDE(SUM(SM_ExecutionMetrics[mEnginePeakMemoryKB]),[SelectedSizeUnit]), 
+			    SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"}
+			    )
+			```
+		formatString: #,0.00
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 31da23da-1677-4849-b123-62edb2903bd9
+
+	measure 'Refresh Mashup CpuTime' = CALCULATE(SUM(SM_ExecutionMetrics[mEngineCpuTimeMs])/[SelectedTimeUnit], SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 5096257d-d517-445a-a673-3d24dcb031ca
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Max Command Duration' = CALCULATE([Max Duration], SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 5f820661-2f3c-4324-95a3-183b377e3872
+
+	measure 'Failed Request' = [Cmd Request] - CALCULATE([Cmd Request],SM_ExecutionMetrics[StatusCode]=0)
+		formatString: 0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 88812c52-28e2-41f8-9245-9e56d2691deb
+
+		changedProperty = FormatString
+
+	measure 'Failed Command %' = DIVIDE([Failed Command], [Command OperationId Count])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 93fa9dcc-6c8a-43a5-9b6e-30b04cd39b15
+
+	measure 'Failed Command' = CALCULATE([Failed Operation], SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 410f5fa2-6543-49d8-9af2-76ab3732f8f7
+
+		changedProperty = FormatString
+
+	measure CommitTime = CALCULATE( SUM(SM_ExecutionMetrics[CommitMs])/[SelectedTimeUnit], SM_ExecutionMetrics[OperationName] = "CommandEnd")
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 833d5028-56e7-45cd-bc9e-c8575dbff525
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Commit Phase2' = SUM(SM_ExecutionMetrics[Phase2CommitMs])/[SelectedTimeUnit]
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: ab7422dd-4fda-4a2b-925a-5401daf2e32d
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Commit Phase1' = SUM(SM_ExecutionMetrics[Phase1CommitMs])/[SelectedTimeUnit]
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 26b20bb4-ba50-4827-abb3-ab64eeef1fb6
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Command with SequencePoint' = CALCULATE([Command OperationId Count],SM_ExecutionMetrics[SequencePointCount]>0)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 53dbc2bd-db26-4ea8-87e6-8d292280817f
+
+		changedProperty = FormatString
+
+	measure 'Command Start' = CALCULATE([Execution From], SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 4303e207-651b-4bdb-99c7-f791f3434251
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Command End' = CALCULATE( [Execution To], SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 6860e3ff-9269-4665-a1a0-f92ec33c8d58
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Command CpuTime' = CALCULATE([Total CPU Time], SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: a39a5865-e263-485d-9195-fa437db5b88b
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Cmd Request' = CALCULATE( [Request Count], SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 4651bade-cfbe-46ad-873f-bba4f8f065a6
+
+		changedProperty = FormatString
+
+	measure 'Max Command Peak Memory' = ```
+			
+			CALCULATE( 
+			    DIVIDE(MAX(SM_ExecutionMetrics[approximatePeakMemConsumptionKB]), [SelectedSizeUnit]), 
+			    SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"}
+			)
+			```
+		formatString: #,0.00
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: fbf19b1c-8c3b-4566-a25c-d16cae179cc3
+
+	measure 'Command OperationId Count' = CALCULATE([SM Operations], SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 010772a6-8717-4a55-b589-1ab81b2d36f1
+
+		changedProperty = FormatString
+
+	measure 'Cmd Cnt Progress' = CALCULATE([Command OperationId Count],CROSSFILTER(SM_ExecutionMetrics[OperationId],'SM_Progress_Report'[OperationId],Both))
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 8ca293da-3dfb-4337-bcfe-15475125362b
+
+	measure 'Avg Cmd Duration' = CALCULATE([SM Avg Duration], SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 574495b6-c805-4964-b145-85630a4378bb
+
+		changedProperty = FormatString
+
+	measure 'Avg Cmd CpuTime' = CALCULATE([Avg CPU Time], SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"})/[SelectedTimeUnit]
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 166049ba-3a3d-4f2d-b5cf-52dae0db5261
+
+	measure 'Avg CPU Time' = ```
+			
+			    DIVIDE(
+			        AVERAGE(SM_ExecutionMetrics[totalCpuTimeMs]),
+			        [SelectedTimeUnit]
+			    )
+			```
+		formatString: #,0.0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: d3f6056e-ea53-43c7-b9bf-4458a95579ec
+
+	measure 'SM Avg Duration' =
+			
+			DIVIDE(
+			    AVERAGE(SM_ExecutionMetrics[durationMs]),
+			    [SelectedTimeUnit]
+			)
+		formatString: #,0.0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 66953724-5dc6-4f2a-a783-4e2a9a442ea7
+
+	measure Capacities = DISTINCTCOUNT(SM_ExecutionMetrics[CapacityId])
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: dd1a652b-2508-405a-9934-26aff7a3261d
+
+	measure 'Event Count' = SUM(SM_ExecutionMetrics[LogCnt])
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 27f2d05f-c7b5-494b-973a-44505d3ef4cc
+
+	measure 'Execution From' = MIN(SM_ExecutionMetrics[timeStart])
+		formatString: yyyy-mm-dd hh:nn
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 17bda252-d234-4849-bf9b-39f71a4d3526
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Execution To' = MAX(SM_ExecutionMetrics[timeEnd])
+		formatString: yyyy-mm-dd hh:nn
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 8b53f8eb-7c4c-4904-aa8d-4320ae64c33b
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Failed Operation' = CALCULATE([SM Operations], SM_ExecutionMetrics[Status]="Failed")
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: d530a49d-4123-40ff-865e-ae3a6d1f59af
+
+	measure 'Failed Operations %' = DIVIDE([Failed Operation],[SM Operations])
+		formatString: 0.000%;-0.000%;0.000%
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: c1e1ba84-1561-4b43-92f0-a1f30900de4d
+
+	measure 'Max CPU Time' =
+			
+			DIVIDE(
+			    MAX(SM_ExecutionMetrics[totalCpuTimeMs]),
+			    [SelectedTimeUnit]
+			)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 4f9d3b09-7d77-4aba-b710-78c7f6495766
+
+	measure 'Max Duration' = MAX(SM_ExecutionMetrics[durationMs])/[SelectedTimeUnit]
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 3e2b0aaf-3390-4309-89c8-6fe553daf207
+
+	measure 'SM Operations' = DISTINCTCOUNTNOBLANK(SM_ExecutionMetrics[OperationId])
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 0dfe542a-1246-491b-a185-c65af0506863
+
+	measure 'Max Request Peak Memory' =
+			
+			DIVIDE(
+			    MAX(SM_ExecutionMetrics[approximatePeakMemConsumptionKB]),
+			    [SelectedSizeUnit]
+			)
+		formatString: #,0.00
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 048a5e81-f8d4-444f-80a4-93c0d7d5fba7
+
+	measure 'Status Code' = SELECTEDVALUE(SM_ExecutionMetrics[StatusCode])
+		formatString: 0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: ab2ffbdf-b498-4aad-ab4b-31ffb336a11b
+
+	measure 'Total Duration' =
+			
+			DIVIDE(
+			    SUM(SM_ExecutionMetrics[durationMs]),
+			    [SelectedTimeUnit]
+			)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 84d60137-9322-40c6-8666-8cc1fb2b7295
+
+	measure 'Total CPU Time' =
+			
+			DIVIDE(
+			    SUM(SM_ExecutionMetrics[totalCpuTimeMs]),
+			    [SelectedTimeUnit]
+			)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 6ab7b1df-9504-4072-8dec-f2d6a1b2ddbc
+
+	measure 'Calculated Column Count' = SUMX(SUMMARIZE('SM_Progress_Report','SM_Semantic_Models'[ItemId],'SM_Progress_Report'[TableName]),CALCULATE(MAX('SM_Progress_Report'[ObjectCount]),'SM_Progress_Report'[ObjectType]="Calculated column"))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: b2f27c0a-7c67-4ff9-9445-8f3af1cd11e0
+
+		changedProperty = FormatString
+
+	measure 'Column Count' = SUMX(VALUES('SM_Progress_Report'[TableName]),CALCULATE(MAX('SM_Progress_Report'[ObjectCount]),'SM_Progress_Report'[OperationDetailName]="CompressSegment"))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 57921194-f2f9-4b48-a6c4-8ba760ba305d
+
+		changedProperty = FormatString
+
+	measure 'Correlation ID' = SELECTEDVALUE('SM_Progress_Report'[CorrelationId])
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: a4500e91-3e98-471e-a7a4-50511886cae1
+
+	measure 'ErrorTime Ms' = IF(HASONEVALUE('SM_Progress_Report'[CorrelationId]),CALCULATE( MAX('SM_Progress_Report'[ErrorTimeMs]),'SM_Progress_Report'[StatusCode]<>BLANK()))
+		formatString: 0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 155f2701-96e2-46c7-b034-0c27eb1b2334
+
+		changedProperty = IsHidden
+
+	measure 'ExecuteSQL & ReadData Time' = [ExecuteSQL Time]+[ReadData Time]
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: f128cfcd-c913-4e26-b634-068a00766f2a
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Hierarchy Count' = SUMX(SUMMARIZE('SM_Progress_Report','SM_Semantic_Models'[ItemId],'SM_Progress_Report'[TableName]),CALCULATE(MAX('SM_Progress_Report'[ObjectCount]),'SM_Progress_Report'[ObjectType]="hierarchy"))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: e26b95c6-7f50-4590-8c00-9b55bf7212a3
+
+		changedProperty = FormatString
+
+	measure 'ExecuteSQL Time' = IF(HASONEVALUE('SM_Progress_Report'[OperationId]),IF(ISBLANK([ExecuteSQL End]),BLANK(), ([ExecuteSQL End]-[ExecuteSQL Start])*3600*24*1000/[SelectedTimeUnit]))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 7ba1515a-2cf9-42ce-bba4-9898b57103b1
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ExecuteSql Start' = CALCULATE([Progress Start],'SM_Progress_Report'[OperationDetailName]="ExecuteSql")
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 6d623d9b-ddb0-4774-9770-c03c1da53ad0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'ExecuteSql End' = CALCULATE([Progress End],'SM_Progress_Report'[OperationDetailName]="ExecuteSql")
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 7f71651a-d244-4331-9322-ad66512f102b
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'ExecuteSQL Duration' = CALCULATE([Progress Duration],'SM_Progress_Report'[OperationDetailName]="ExecuteSql")
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: c18f3d94-3673-4774-86d9-f05ae22465a3
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Max Row Processed' = SUMX(SUMMARIZE('SM_Progress_Report','SM_Semantic_Models'[ItemId],'SM_Progress_Report'[TableName],'SM_Progress_Report'[PartitionName]),CALCULATE(MAX('SM_Progress_Report'[ObjectCount]),'SM_Progress_Report'[OperationDetailName]="ReadData",VALUES('SM_Progress_Report'[OperationId])))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 1078b192-fb34-49df-901d-53a597eebdc5
+
+		changedProperty = FormatString
+
+	measure 'Partition Count' = COUNTROWS(CALCULATETABLE(SUMMARIZE('SM_Progress_Report', 'SM_Semantic_Models'[ItemId], 'SM_Progress_Report'[TableName],'SM_Progress_Report'[PartitionName]),KEEPFILTERS( 'SM_Progress_Report'[PartitionName]<>"")))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 6daea927-20a5-48bb-aeb1-af0715077cc5
+
+		changedProperty = FormatString
+
+	measure 'Partition CpuTime' = CALCULATE( SUM('SM_Progress_Report'[CpuTimeMs])/[SelectedTimeUnit], 'SM_Progress_Report'[OperationDetailName]="TabularRefresh", 'SM_Progress_Report'[ObjectType]="Partition")
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: fcbd6b55-0705-4e8f-aed3-3e4a96dba273
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Partition End Time' = CALCULATE([Progress End],('SM_Progress_Report'[OperationDetailName]="TabularRefresh"&&'SM_Progress_Report'[ObjectType]="Partition"))
+		formatString: General Date
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 671a7fed-ccdd-4290-8492-15f8cc7212f6
+
+	measure 'Partition Error Count' = CALCULATE(DISTINCTCOUNT('SM_Progress_Report'[CorrelationId]),KEEPFILTERS('SM_Progress_Report'[StatusCode]<>BLANK()))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 4fbfbc10-0bda-46b4-be08-502e2e9df146
+
+	measure 'Partition Start Time' = CALCULATE([Progress Start],('SM_Progress_Report'[OperationDetailName]="TabularRefresh"&&'SM_Progress_Report'[ObjectType]="Partition"))
+		formatString: General Date
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 0c172e3d-d153-4cfa-959c-bc093bb93354
+
+	measure 'Partition TMID' = SELECTEDVALUE('SM_Progress_Report'[PartitionTMID])
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 731d8be0-9c45-4067-962e-e3acb5957d19
+
+	measure 'Progress Duration' =
+			
+			DIVIDE(
+			    SUM('SM_Progress_Report'[DurationMs]),
+			    [SelectedTimeUnit]
+			)
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: a9fee112-c6b1-47e6-a892-5b35f0193931
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Progress End' = MAX('SM_Progress_Report'[endTime])
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 132d08e9-2d7c-47ae-b20a-472406d98650
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Progress ErrorCode' = CALCULATE(SELECTEDVALUE('SM_Progress_Report'[StatusCode]), 'SM_Progress_Report'[OperationDetailName]="TabularRefresh")
+		formatString: 0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: b88588c8-d846-4d0b-a2cb-5a61042b9159
+
+	measure 'Progress MashupCpuTime' = SUM('SM_Progress_Report'[MashupCPUTime])/[SelectedTimeUnit]
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 6f7e188c-d6da-47a7-8850-c58d9162b6a8
+
+	measure 'Progress Mashup Peak Memory' =
+			
+			DIVIDE(
+			    SUM('SM_Progress_Report'[MashupPeakMemory]),
+			    [SelectedSizeUnit]
+			)
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: e9ac081f-b5c7-48bf-b52a-016f7c252ab8
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Progress Start' = MIN('SM_Progress_Report'[startTime])
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: df7cce1b-660f-4e13-b4c2-28f9d861259e
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Progress Time' =
+			
+			IF(ISBLANK([Progress End]),BLANK(),([Progress End]-[Progress Start])*3600*24*1000/[SelectedTimeUnit])
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 1e5d8e6e-25bd-4536-87d1-5666deccd0ae
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ReadData Duration' = CALCULATE([Progress Duration],'SM_Progress_Report'[OperationDetailName]="ReadData")
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 99270c02-5242-4ad3-b3d2-521ea878ea75
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ReadData End' = CALCULATE([Progress End],'SM_Progress_Report'[OperationDetailName]="ReadData")
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 892cdcb3-a01c-451a-a333-3cbd1ab8bb3d
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'ReadData Time' = IF(HASONEVALUE('SM_Progress_Report'[OperationId]),IF(ISBLANK([ReadData End]),BLANK(), ([ReadData End]-[ReadData Start])*3600*24*1000/[SelectedTimeUnit]))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: cdd1d28b-82fe-4810-89ec-5f1f7111ffa9
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ReadData Start' = CALCULATE([Progress Start],'SM_Progress_Report'[OperationDetailName]="ReadData")
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: cd8a9529-edc4-4674-bc8b-9a9ba52589ff
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Relationship Count' = SUMX(VALUES('SM_Semantic_Models'[ItemId]),CALCULATE(MAX('SM_Progress_Report'[ObjectCount]),'SM_Progress_Report'[ObjectType]="relationship",KEEPFILTERS('SM_Progress_Report'[TableName]="")))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: da2d20c7-87c8-474d-9951-a435982d854c
+
+		changedProperty = FormatString
+
+	measure 'Row / Sec Parallel' = DIVIDE([Row Processed],[ReadData Time])
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 8a0a29bb-f7c5-4041-b126-c68bb044f89a
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Row / Sec Source' = DIVIDE([Row Processed],[ReadData Duration])
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 04815b0c-45fa-44a6-9bc1-07f1367584ac
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Row Processed' = CALCULATE(SUM('SM_Progress_Report'[ObjectCount]), KEEPFILTERS('SM_Progress_Report'[OperationDetailName]="ReadData"))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 923f122a-5c74-4a1e-8734-3f8ee5611c67
+
+		changedProperty = FormatString
+
+	measure 'Row Processed Reconcile' = [Total Rows] - [Row Processed]
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 6121d029-acc9-4c36-86a4-780fc1e5d7a1
+
+	measure 'Table Count' = COUNTROWS(CALCULATETABLE(SUMMARIZE('SM_Progress_Report', 'SM_Semantic_Models'[ItemId], 'SM_Progress_Report'[TableName]),KEEPFILTERS( 'SM_Progress_Report'[TableName]<>"")))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 0f7820da-b2da-4c43-80ad-e0afaa387b4a
+
+		changedProperty = FormatString
+
+	measure 'Table TMID' = SELECTEDVALUE('SM_Progress_Report'[TableTMID])
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 31eab764-946c-464e-89dc-e864d8ecd9a2
+
+	measure 'TabularRefresh Duration' = CALCULATE([Progress Duration],'SM_Progress_Report'[OperationDetailName]="TabularRefresh"&&'SM_Progress_Report'[ObjectType]<>"partition")
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 1b0a8752-1925-48db-b60f-902d57ea7bcf
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'TabularRefresh End' = CALCULATE([Progress End],'SM_Progress_Report'[OperationDetailName]="TabularRefresh"&&'SM_Progress_Report'[ObjectType]<>"partition")
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: c9cd051f-6c62-48bb-91b5-388be8430cf0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'TabularRefresh Start' = CALCULATE([Progress Start],'SM_Progress_Report'[OperationDetailName]="TabularRefresh"&&'SM_Progress_Report'[ObjectType]<>"partition")
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 88da3469-c188-4461-a64a-fa1d175860f2
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'TabularRefresh Time' = IF(HASONEVALUE('SM_Progress_Report'[OperationId]),IF(ISBLANK([TabularRefresh End]),BLANK(), ([TabularRefresh End]-[TabularRefresh Start])*3600*24*1000/[SelectedTimeUnit]))
+		formatString: #,0
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: a404d652-90bd-4570-9a73-9436b66d568b
+
+		changedProperty = FormatString
+
+	measure 'EH Users' = DISTINCTCOUNTNOBLANK(EH_Queries[User])
+		formatString: #,0
+		displayFolder: Eventhouses\Queries
+		lineageTag: 06f696fc-3f73-4e70-89a8-59e7bee28848
+
+	measure 'EH Query Operations' = DISTINCTCOUNTNOBLANK(EH_Queries[OperationId])
+		formatString: #,0
+		displayFolder: Eventhouses\Queries
+		lineageTag: 0664debd-81cc-4a3d-8ab5-c2acc68e99af
+
+	measure 'EH Total Duration' =
+			
+			DIVIDE(
+			    SUM(EH_Queries[DurationMs]),
+			    [SelectedTimeUnit]
+			)
+		formatString: #,0.00
+		displayFolder: Eventhouses\Queries
+		lineageTag: 2b757206-6565-45b8-8173-39825e5ed3a2
+
+	measure 'EH Avg Query Duration' =
+			
+			DIVIDE(
+			    AVERAGE(EH_Queries[DurationMs]),
+			    [SelectedTimeUnit]
+			)
+		formatString: #,0.00
+		displayFolder: Eventhouses\Queries
+		lineageTag: 6cc3b16a-e2ce-492d-85c0-8c7165a39dec
+
+	measure 'EH Databases' = DISTINCTCOUNTNOBLANK(EH_Queries[DatabaseId])
+		formatString: #,0
+		displayFolder: Eventhouses\Queries
+		lineageTag: 97c98bac-26ea-4720-bc36-4e43deafa302
+
+	measure 'Avg Qry CpuTime' = CALCULATE( AVERAGE(SM_ExecutionMetrics[totalCpuTimeMs])/[SelectedTimeUnit], SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0.0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 5bfd082e-278d-4028-806f-6a4c270cfd1f
+
+	measure 'Capacity Throttling' = CALCULATE( SUM(SM_ExecutionMetrics[capacityThrottlingMs])/[SelectedTimeUnit], SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 30862653-6699-46a2-b4a8-b0eb829f0e54
+
+	measure 'Capacity Throttling Count' = CALCULATE([SM Operations],SM_ExecutionMetrics[capacityThrottlingMs]>0)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 62068258-8cf2-4d78-984a-5ef4eacca967
+
+	measure 'Unique Semantic Model Count' = CALCULATE(DISTINCTCOUNT(SM_ExecutionMetrics[DatasetId]),'SM_ExecutionMetrics'[DatasetId]<>"")
+		formatString: 0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 63c0e673-1762-4199-bde1-28da38c96aac
+
+		changedProperty = FormatString
+
+	measure 'Semantic Model Mode' = SELECTEDVALUE(SM_ExecutionMetrics[DatasetMode])
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: dcc5e236-8fb9-4d74-ac82-903ca3d3506f
+
+	measure 'Distinct Query' = CALCULATE( DISTINCTCOUNT(SM_ExecutionMetrics[EventTextHash]), SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: 0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: aa560731-753a-4ead-ae06-c8226e2416ec
+
+	measure 'effectiveClaim Count' = CALCULATE( DISTINCTCOUNT(SM_ExecutionMetrics[effectiveClaims]), SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: df9faa6d-68d9-4f76-b86c-12bec8601070
+
+		changedProperty = FormatString
+
+	measure 'SM Executing Users' =
+			
+			// Count
+			CALCULATE( DISTINCTCOUNT(SM_ExecutionMetrics[Executing User]), SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 4e83fa0a-5c7e-4634-b8e8-4df7a2e28b8b
+
+		changedProperty = FormatString
+
+	measure 'Failed Query' = CALCULATE([Failed Operation], SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 22e2163e-ebc6-4e3a-9fde-4b07a8bcb2d3
+
+		changedProperty = FormatString
+
+	measure 'Failed Query %' = DIVIDE([Failed Query], [Query OperationId Count])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 7a0d153c-802b-4962-8936-b42719262d94
+
+		changedProperty = FormatString
+
+	measure 'Max Qry CpuTime' = CALCULATE([Max CPU Time], SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 830d0c62-6e46-4d6a-bd67-d6d23f3822e8
+
+	measure 'Max Query Duration' = CALCULATE([Max Duration], SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: d7da7070-dfa7-4cb5-a33f-e09e3444eb17
+
+	measure 'Query OperationId Count' = CALCULATE([SM Operations], SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 0608bb7c-7c85-40b4-86b8-1bda223c392a
+
+		changedProperty = FormatString
+
+	measure 'Queried DB' = CALCULATE( [Item], CROSSFILTER('SM_Semantic_Models'[ItemId],SM_ExecutionMetrics[ItemId],Both), SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: 0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 34478581-2e6d-4ca8-8798-a10d94f2cb4a
+
+	measure 'Query Capacity Throttling %' = DIVIDE([Query Capacity Throttling Count],[Query OperationId Count])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 4a758f28-e0f8-46c8-851e-bfff4bb21445
+
+	measure 'Query Capacity Throttling Count' = CALCULATE([Query OperationId Count],SM_ExecutionMetrics[capacityThrottlingMs]>0)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 000a1816-7773-4323-b3a2-f4041d10edfa
+
+	measure 'Query CpuTime' = CALCULATE([Total CPU Time], SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 276f09eb-1615-4a28-abc9-48cb18b6925a
+
+		changedProperty = FormatString
+
+	measure 'Query Duration' = CALCULATE([SM Avg Duration], SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0.0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 34752308-ab8e-47e6-a1b2-a5550db50e85
+
+		changedProperty = FormatString
+
+	measure 'Query End' = CALCULATE( [Execution To], SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 866290cb-5206-4ccb-a34a-42af6e1a31f5
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure 'Query Peak Memory' = ```
+			
+			CALCULATE( 
+			    DIVIDE(SUM(SM_ExecutionMetrics[approximatePeakMemConsumptionKB]), [SelectedSizeUnit]), 
+			    SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"}
+			)
+			```
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: a2e803a0-740c-4943-8bfb-3892c82361c0
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Query Processing CPU Time' = SUM(SM_ExecutionMetrics[queryProcessingCpuTimeMs])/[SelectedTimeUnit]
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: bc25238a-dfff-44ad-950d-aca060215250
+
+	measure 'Query Request' = CALCULATE( [Request Count], SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: c8447809-893d-441a-bb8f-ee580a46f833
+
+		changedProperty = FormatString
+
+	measure 'Query Result Rows' = CALCULATE( SUM(SM_ExecutionMetrics[queryResultRows]), SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: ce2b6c9a-50b9-426a-a960-adb1007a6ec3
+
+	measure 'Query Start' = CALCULATE( [Execution From] , SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: yyyy-mm-dd hh:nn:ss
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 93162eac-35bb-4fea-95fb-758adc069155
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	measure QueryPerMin = DIVIDE([Query OperationId Count],([Query End]-[Query Start])*24*60)
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 9bd1cb78-37d3-4975-a8e9-ccfb0df7ac00
+
+		changedProperty = FormatString
+
+	measure 'Unique Report Count' = CALCULATE(DISTINCTCOUNT(SM_ExecutionMetrics[ReportId]),SM_ExecutionMetrics[ReportId]<>"")
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 7fba777b-0e25-4ed1-b551-312f9c2c2678
+
+		changedProperty = FormatString
+
+	measure 'Request Count' = DISTINCTCOUNT(SM_ExecutionMetrics[RequestID])
+		formatString: 0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: d7a1a20c-5cd3-4a75-b069-a0dc31c9b1f9
+
+	measure 'SM Users' =
+			
+			// Count
+			CALCULATE( DISTINCTCOUNT(SM_ExecutionMetrics[User]), SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"})
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: 93e1a42b-f2eb-4b9a-9cfb-81c8a6cd874a
+
+		changedProperty = FormatString
+
+	measure 'Visual Count' = CALCULATE(DISTINCTCOUNT(SM_ExecutionMetrics[VisualId]),SM_ExecutionMetrics[VisualId]<>"")
+		formatString: #,0
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: f03aa0dc-3aec-4ec6-adf0-3d28bc8b4785
+
+		changedProperty = FormatString
+
+	measure 'Max Query Peak Memory' = ```
+			
+			CALCULATE( 
+			    DIVIDE(MAX(SM_ExecutionMetrics[approximatePeakMemConsumptionKB]), [SelectedSizeUnit]), 
+			    SM_ExecutionMetrics[OperationName] in {"QueryEnd", "QueryBegin"}
+			)
+			```
+		displayFolder: Semantic Models\Execution Metrics\Query
+		lineageTag: d8a2fb17-7555-45f4-849a-a5553af5608a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Report Version' = "v2025.1.1"
+		displayFolder: Meta
+		lineageTag: 7c18a320-5112-40b1-bcc0-9dc602ae3126
+
+	measure 'Max Refresh Mashup Peak Memory' = ```
+			
+			CALCULATE( 
+			    DIVIDE(
+			        MAX(SM_ExecutionMetrics[mEnginePeakMemoryKB]),
+			        [SelectedSizeUnit]
+			        ), 
+			    SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"}
+			    )
+			```
+		formatString: #,0.00
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 8663f3d5-b950-4d1e-8b65-155d367922c9
+
+	measure 'Request Peak Memory' =
+			
+			DIVIDE(
+			    SUM(SM_ExecutionMetrics[approximatePeakMemConsumptionKB]),
+			    [SelectedSizeUnit]
+			)
+		formatString: 0.00
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 2f9b623a-afa2-45cf-8e94-be986d02808f
+
+	measure 'Mashup Peak Memory' =
+			
+			DIVIDE(
+			    SUM(SM_Progress_Report[MashupPeakMemory]),
+			    [SelectedSizeUnit]
+			)
+		formatString: #,0.00
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 44fc2967-ded5-44b2-a113-c61e6453d4c3
+
+	measure 'Max Mashup Peak Memory' =
+			
+			DIVIDE(
+			    MAX(SM_Progress_Report[MashupPeakMemory]),
+			    [SelectedSizeUnit]
+			)
+		formatString: #,0.00
+		displayFolder: Semantic Models\Execution Metrics\General
+		lineageTag: 4750e32b-77d4-42e8-9d70-39e4d81fe099
+
+	measure 'Progress Dynamic Tooltip 1' = ```
+			
+			SWITCH(
+			    MIN(SM_Progress_Report[OperationDetailName]),
+			    "ReadData", [Row Processed], 
+			    "TabularRefresh", [Progress MashupCpuTime],
+			    "Drill-down to Operation Detail level"
+			    )
+			
+			```
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: a40bd085-46e7-40b5-b7cf-8cb0684a7bbb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Progress Dynamic Tooltip 2' = ```
+			
+			SWITCH(
+			    MIN(SM_Progress_Report[OperationDetailName]),
+			    "ReadData", [Row / Sec Source], 
+			    "TabularRefresh", [Progress Mashup Peak Memory]
+			    )
+			```
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 84258a8c-8cbd-48b2-89c4-d38bf89a64db
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Progress Dynamic Tooltip 1 Helper' = ```
+			
+			SWITCH(
+			    MIN(SM_Progress_Report[OperationDetailName]),
+			    "ReadData", "Row processed", 
+			    "TabularRefresh", "Progress Mashup CPU Time",
+			    BLANK()
+			    )
+			```
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 53f365ee-33d9-465e-aadc-72be09de56d1
+
+	measure 'Progress Dynamic Tooltip 2 Helper' = ```
+			
+			SWITCH(
+			    MIN(SM_Progress_Report[OperationDetailName]),
+			    "ReadData", "Row / Sec Source", 
+			    "TabularRefresh", "Progress Mashup Peak Memory"
+			    )
+			```
+		displayFolder: Semantic Models\Progress Report
+		lineageTag: 337abc08-dabe-40da-9e08-86a6561c7c00
+
+	measure 'EH Total CPU Time' =
+			
+			DIVIDE(
+			    SUM(EH_Queries[CpuTimeMs]),
+			    [SelectedTimeUnit]
+			)
+		displayFolder: Eventhouses\Queries
+		lineageTag: e26832fc-c1c8-4a8a-897b-c39541b730e7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EH Max Query Duration' =
+			
+			DIVIDE(
+			    MAX(EH_Queries[DurationMs]),
+			    [SelectedTimeUnit]
+			)
+		displayFolder: Eventhouses\Queries
+		lineageTag: 74ec99d8-67e8-46da-a1cc-5241f6685e28
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EH Max CPU Time' =
+			
+			DIVIDE(
+			    MAX(EH_Queries[CpuTimeMs]),
+			    [SelectedTimeUnit]
+			)
+		displayFolder: Eventhouses\Queries
+		lineageTag: 9ac7dcaf-acd7-4fa2-bed3-327a4ae9e335
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EH Failed Queries' =
+			
+			CALCULATE(
+			    [EH Query Operations],
+			    EH_Queries[Status] = "Failed"
+			)
+		formatString: 0
+		displayFolder: Eventhouses\Queries
+		lineageTag: 29a7485e-f020-4332-b227-71a1c4bc44f9
+
+	measure 'EH Failed Query %' = ```
+			
+			DIVIDE(
+			    [EH Failed Queries], 
+			    [EH Query Operations]
+			)
+			```
+		formatString: 0.000%;-0.000%;0.000%
+		displayFolder: Eventhouses\Queries
+		lineageTag: 445e20b4-4615-4e8c-83a7-e44a9ce9257b
+
+	measure 'Max Refresh Peak Memory' = ```
+			
+			CALCULATE( 
+			    DIVIDE(
+			        MAX(SM_ExecutionMetrics[approximatePeakMemConsumptionKB]),
+			        [SelectedSizeUnit]
+			        ),
+			    SM_ExecutionMetrics[OperationName] in {"CommandEnd", "CommandBegin"}
+			)
+			```
+		displayFolder: Semantic Models\Execution Metrics\Command
+		lineageTag: 06a8486e-0c6f-4ce8-b7f3-34b1108f1d62
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EH Avg CPU Time' =
+			
+			DIVIDE(
+			    AVERAGE(EH_Queries[CpuTimeMs]),
+			    [SelectedTimeUnit]
+			)
+		displayFolder: Eventhouses\Queries
+		lineageTag: 2c080b8b-17f9-47b3-95a0-3afd555fdbf3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'EH Max Memory Peak Query' = ```
+			
+			 DIVIDE(
+			    MAX(EH_Queries[MemoryPeakBytes]),
+			    [SelectedSizeUnit]
+			 )
+			```
+		displayFolder: Eventhouses\Queries
+		lineageTag: a442f234-0a44-4c8c-9089-491e484fefa9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		isHidden
+		lineageTag: b8f9bd1b-4e42-463f-a2c3-1a95e7c06764
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metrics = calculated
+		mode: import
+		source = {"metrics"}
+
+	annotation PBI_Id = 7bf020950c634cddaf2b59ad28910c64
+

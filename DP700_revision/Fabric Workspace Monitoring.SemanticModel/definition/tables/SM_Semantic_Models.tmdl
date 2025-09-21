@@ -1,0 +1,73 @@
+table SM_Semantic_Models
+	lineageTag: dd9e522d-6584-41ec-8e2e-d7aff0a6882a
+
+	measure Item = COUNTROWS('SM_Semantic_Models')
+		formatString: 0
+		lineageTag: fb03806a-6977-46c8-a9fd-94777580e4fd
+
+	measure Workspaces = DISTINCTCOUNT('SM_Semantic_Models'[WorkspaceId])
+		formatString: #,0
+		lineageTag: 6899af80-8cfa-4f86-8b63-9b703cfab015
+
+	measure 'Time window start' = INT(NOW() - [Execution From]) & "d ago"
+		lineageTag: 20e809fb-490a-4b7d-a405-6a58f4dd3f26
+
+	measure 'Time window end' = IF([Execution To]>NOW(), 0, INT(NOW() - [Execution To])) & "d ago"
+		lineageTag: 0019cce8-c15d-48df-8fc6-c6e68f0db5ff
+
+	column WorkspaceId
+		lineageTag: 1755b383-416f-41d0-84a4-479d4677f867
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WorkspaceId]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkspaceName
+		lineageTag: 9c5af338-e7f3-4352-a54d-077fc58eca22
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WorkspaceName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItemId
+		lineageTag: 55ddd08a-b553-47a9-a687-74bec8d89301
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: SM_ExecutionMetrics[ItemId]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItemURL
+		isHidden
+		lineageTag: 96c397b6-ebca-4618-a2eb-10d51e41cac7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ItemURL]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ItemName
+		lineageTag: 858e66a2-2f99-4848-aced-f389aedac524
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ItemName]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SM_Semantic_Models-0cbb5a1f-1a3c-4c3b-8f5d-7940949ed500 = calculated
+		mode: import
+		source = ```
+				
+				ADDCOLUMNS(
+				    DISTINCT(SM_ExecutionMetrics[ItemId]), 
+				    "WorkspaceId", CALCULATE(MAX(SM_ExecutionMetrics[WorkspaceId])), 
+				    "ItemURL", CONCATENATE("https://app.fabric.microsoft.com/datahub/datasets/",SM_ExecutionMetrics[ItemId]), 
+				    "ItemName", CALCULATE(MAX(SM_ExecutionMetrics[Semantic Model]),KEEPFILTERS(SM_ExecutionMetrics[ItemId]<>SM_ExecutionMetrics[Semantic Model])), 
+				    "WorkspaceName", CALCULATE(MAX(SM_ExecutionMetrics[WorkspaceName]))
+				    )
+				```
+
+	annotation PBI_Id = 67a9d52c7e854cc4a860bd5b45850538
+
