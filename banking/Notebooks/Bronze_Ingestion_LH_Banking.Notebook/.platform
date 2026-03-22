@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Bronze_Ingestion_LH_Banking"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ac0e4b94-389e-b089-4624-16f2ae45beb9"
+  }
+}

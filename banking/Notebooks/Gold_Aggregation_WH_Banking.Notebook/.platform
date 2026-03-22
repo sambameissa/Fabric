@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Gold_Aggregation_WH_Banking"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c9e000ad-443a-a008-4aad-78bbd79a30a7"
+  }
+}

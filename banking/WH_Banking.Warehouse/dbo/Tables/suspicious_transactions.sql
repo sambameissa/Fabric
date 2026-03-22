@@ -1,0 +1,25 @@
+CREATE TABLE [dbo].[suspicious_transactions] (
+
+	[client_id] varchar(8000) NULL, 
+	[transaction_id] varchar(8000) NULL, 
+	[date] date NULL, 
+	[heure] datetime2(6) NULL, 
+	[montant] float NULL, 
+	[devise] varchar(8000) NULL, 
+	[type] varchar(8000) NULL, 
+	[canal] varchar(8000) NULL, 
+	[statut] varchar(8000) NULL, 
+	[is_suspicious] int NULL, 
+	[_bronze_ingestion_ts] datetime2(6) NULL, 
+	[_bronze_source_system] varchar(8000) NULL, 
+	[_bronze_source_file] varchar(8000) NULL, 
+	[_bronze_batch_id] varchar(8000) NULL, 
+	[_silver_row_hash] varchar(8000) NULL, 
+	[_silver_transformed_ts] datetime2(6) NULL, 
+	[nom] varchar(8000) NULL, 
+	[prenom] varchar(8000) NULL, 
+	[segment] varchar(8000) NULL, 
+	[city] varchar(8000) NULL, 
+	[risk_score] float NULL, 
+	[_gold_built_ts] datetime2(6) NULL
+);

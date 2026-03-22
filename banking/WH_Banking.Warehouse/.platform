@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "WH_Banking"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3d152e97-59fa-a77d-41f6-e197b0337efc"
+  }
+}
