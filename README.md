@@ -123,8 +123,4 @@ git clone https://github.com/sambameissa/Fabric
 > 📌 Tous les projets utilisent des **données 100% fictives** générées synthétiquement.  
 > Aucune donnée réelle ou confidentielle n'est publiée dans ce repo.
 
----
 
-**Meissa Ndione SAMBA**  
-Data Engineer & BI Solutions Architect · DP-700 · DP-600 · PL-300 · PMP® · MCT  
-[sambameissa@hotmail.com](mailto:sambameissa@hotmail.com) · [LinkedIn](https://linkedin.com/in/sambameissa)
