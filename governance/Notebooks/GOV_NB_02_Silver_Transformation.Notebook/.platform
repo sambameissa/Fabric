@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "GOV_NB_02_Silver_Transformation",
+    "description": "Nettoyage & normalisation"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "87ef9e3d-f883-90a2-4b6c-a286826593c3"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "GOV_NB_RESET"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "aa1805fc-5f9c-b5cb-4836-048da236f860"
+  }
+}

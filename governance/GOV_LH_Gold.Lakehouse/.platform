@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "GOV_LH_Gold",
+    "description": "Agrégats métier — prêt Power BI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "47255e60-0938-a95b-4a68-328718f4c638"
+  }
+}

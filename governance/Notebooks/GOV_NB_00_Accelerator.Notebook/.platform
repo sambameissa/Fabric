@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "GOV_NB_00_Accelerator"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "09ea4f71-b2cf-9c85-492a-a9afebc3552e"
+  }
+}

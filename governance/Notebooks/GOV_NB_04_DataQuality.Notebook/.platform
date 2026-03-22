@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "GOV_NB_04_DataQuality",
+    "description": "Contrôles qualité"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1b3da2a8-27f4-a3d0-4040-76f0752067aa"
+  }
+}

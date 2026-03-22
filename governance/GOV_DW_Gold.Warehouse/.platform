@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Warehouse",
+    "displayName": "GOV_DW_Gold",
+    "description": "Data Warehouse analytique"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "cdc6c4b0-3e7b-9149-4d2d-61a0c6eb6ced"
+  }
+}

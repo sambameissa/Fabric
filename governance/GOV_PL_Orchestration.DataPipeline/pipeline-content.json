@@ -1,0 +1,212 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Reset_DW",
+        "type": "Script",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "GOV_DW_Gold",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "duex5hvyqddedfrdyr46fy2rdm-q7ahg2tubiaepe3hjtnvr2po4q.datawarehouse.fabric.microsoft.com",
+              "artifactId": "c6eb6ced-61a0-4d2d-9149-3e7bcdc6c4b0",
+              "workspaceId": "6a73c087-0a74-4700-9367-4cdb58e9eee4"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "EXEC dbo.usp_Reset_AllTables;",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        }
+      },
+      {
+        "name": "Bronze_Ingestion",
+        "type": "TridentNotebook",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Reset_DW",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "2220eb29-64fa-4509-b445-1dcae946f771",
+          "workspaceId": "6a73c087-0a74-4700-9367-4cdb58e9eee4"
+        }
+      },
+      {
+        "name": "Silver_Transformation",
+        "type": "TridentNotebook",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Bronze_Ingestion",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "826593c3-a286-4b6c-90a2-f88387ef9e3d",
+          "workspaceId": "6a73c087-0a74-4700-9367-4cdb58e9eee4"
+        }
+      },
+      {
+        "name": "Gold_Aggregation",
+        "type": "TridentNotebook",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Silver_Transformation",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "7e854d6b-5f52-4c8f-b81d-031eb03d34c4",
+          "workspaceId": "6a73c087-0a74-4700-9367-4cdb58e9eee4"
+        }
+      },
+      {
+        "name": "DataQuality",
+        "type": "TridentNotebook",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "Gold_Aggregation",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "752067aa-76f0-4040-a3d0-27f41b3da2a8",
+          "workspaceId": "6a73c087-0a74-4700-9367-4cdb58e9eee4"
+        }
+      },
+      {
+        "name": "Documentation",
+        "type": "TridentNotebook",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [
+          {
+            "activity": "DataQuality",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "notebookId": "b6ccc62f-80c1-4e87-acd1-93425cdbacb6",
+          "workspaceId": "6a73c087-0a74-4700-9367-4cdb58e9eee4"
+        }
+      },
+      {
+        "name": "Load_DW",
+        "type": "Script",
+        "dependsOn": [
+          {
+            "activity": "Documentation",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "linkedService": {
+          "name": "GOV_DW_Gold",
+          "properties": {
+            "annotations": [],
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "endpoint": "duex5hvyqddedfrdyr46fy2rdm-q7ahg2tubiaepe3hjtnvr2po4q.datawarehouse.fabric.microsoft.com",
+              "artifactId": "c6eb6ced-61a0-4d2d-9149-3e7bcdc6c4b0",
+              "workspaceId": "6a73c087-0a74-4700-9367-4cdb58e9eee4"
+            }
+          }
+        },
+        "typeProperties": {
+          "scripts": [
+            {
+              "type": "Query",
+              "text": {
+                "value": "EXEC dbo.usp_Load_FromGold;",
+                "type": "Expression"
+              }
+            }
+          ],
+          "scriptBlockExecutionTimeout": "02:00:00"
+        }
+      }
+    ]
+  }
+}
