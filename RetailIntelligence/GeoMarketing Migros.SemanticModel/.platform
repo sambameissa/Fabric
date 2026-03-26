@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "GeoMarketing Migros"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "661e744e-d60f-858f-4ddc-ce83b90b0f54"
+  }
+}

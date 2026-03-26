@@ -1,0 +1,355 @@
+table gold_geomarketing_scoring
+	lineageTag: 3be685a1-f8bf-4619-98ac-a38720bf0ee3
+	sourceLineageTag: [dbo].[gold_geomarketing_scoring]
+
+	column store_id
+		dataType: string
+		lineageTag: fbcec984-e379-4a84-9cf1-3a0f0cb3249f
+		sourceLineageTag: store_id
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column ville
+		dataType: string
+		lineageTag: 56dfa591-4238-4af6-a922-4c0c32513b9e
+		sourceLineageTag: ville
+		summarizeBy: none
+		sourceColumn: ville
+
+		annotation SummarizationSetBy = Automatic
+
+	column population_primaire
+		dataType: int64
+		formatString: 0
+		lineageTag: b9ea9eb7-1dd3-4e87-99ba-90bc240520b6
+		sourceLineageTag: population_primaire
+		summarizeBy: sum
+		sourceColumn: population_primaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column population_secondaire
+		dataType: int64
+		formatString: 0
+		lineageTag: c8c53d46-bb02-4ddc-962d-b84c3f899c2c
+		sourceLineageTag: population_secondaire
+		summarizeBy: sum
+		sourceColumn: population_secondaire
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenu_moyen_chf
+		dataType: int64
+		formatString: 0
+		lineageTag: 261fe66e-c44e-454c-a6c3-a90586fda068
+		sourceLineageTag: revenu_moyen_chf
+		summarizeBy: sum
+		sourceColumn: revenu_moyen_chf
+
+		annotation SummarizationSetBy = Automatic
+
+	column pct_familles
+		dataType: double
+		lineageTag: 76723856-1672-4430-8145-b79e201c69f2
+		sourceLineageTag: pct_familles
+		summarizeBy: sum
+		sourceColumn: pct_familles
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pct_seniors
+		dataType: double
+		lineageTag: 8cfcecbb-7991-400c-8114-9d160e99c412
+		sourceLineageTag: pct_seniors
+		summarizeBy: sum
+		sourceColumn: pct_seniors
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pct_actifs
+		dataType: double
+		lineageTag: 54cf2f46-f7e7-4fbd-8788-e88b0917e4b9
+		sourceLineageTag: pct_actifs
+		summarizeBy: sum
+		sourceColumn: pct_actifs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column indice_pouvoir_achat
+		dataType: double
+		lineageTag: daa36130-c78f-40de-8646-9d1fb2d86c2a
+		sourceLineageTag: indice_pouvoir_achat
+		summarizeBy: sum
+		sourceColumn: indice_pouvoir_achat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nb_concurrents_directs
+		dataType: int64
+		formatString: 0
+		lineageTag: b7d5f544-9fed-4f62-8d69-9b667110d559
+		sourceLineageTag: nb_concurrents_directs
+		summarizeBy: sum
+		sourceColumn: nb_concurrents_directs
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_concurrents_indirects
+		dataType: int64
+		formatString: 0
+		lineageTag: dced6e5c-d718-4712-bd3b-a5d0ccf57964
+		sourceLineageTag: nb_concurrents_indirects
+		summarizeBy: sum
+		sourceColumn: nb_concurrents_indirects
+
+		annotation SummarizationSetBy = Automatic
+
+	column part_de_marche_estimee_pct
+		dataType: double
+		lineageTag: ad69d040-6366-42f2-b6d3-68ac2d98d58e
+		sourceLineageTag: part_de_marche_estimee_pct
+		summarizeBy: sum
+		sourceColumn: part_de_marche_estimee_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column potentiel_ca_zone_mchf
+		dataType: double
+		lineageTag: 20b05ea8-3b8a-45c8-8811-5dfeda982354
+		sourceLineageTag: potentiel_ca_zone_mchf
+		summarizeBy: sum
+		sourceColumn: potentiel_ca_zone_mchf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column indice_attractivite
+		dataType: double
+		lineageTag: 5c283076-016d-4531-8728-e8da6c56057f
+		sourceLineageTag: indice_attractivite
+		summarizeBy: sum
+		sourceColumn: indice_attractivite
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column flux_pietons_semaine
+		dataType: int64
+		formatString: 0
+		lineageTag: b71b901e-52b7-4855-9776-7f49d50597fd
+		sourceLineageTag: flux_pietons_semaine
+		summarizeBy: sum
+		sourceColumn: flux_pietons_semaine
+
+		annotation SummarizationSetBy = Automatic
+
+	column accessibilite_score
+		dataType: double
+		lineageTag: f2b6b350-1feb-4fad-a325-bffe4add9b09
+		sourceLineageTag: accessibilite_score
+		summarizeBy: sum
+		sourceColumn: accessibilite_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _bronze_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 99a09706-32da-47b5-933c-bc03e9d33c5a
+		sourceLineageTag: _bronze_ts
+		summarizeBy: none
+		sourceColumn: _bronze_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	column _source_system
+		dataType: string
+		lineageTag: 3d9a6a8e-1226-474d-b308-7fccb506169c
+		sourceLineageTag: _source_system
+		summarizeBy: none
+		sourceColumn: _source_system
+
+		annotation SummarizationSetBy = Automatic
+
+	column _source_file
+		dataType: string
+		lineageTag: d432114a-60c7-485f-b436-cd2995f5a794
+		sourceLineageTag: _source_file
+		summarizeBy: none
+		sourceColumn: _source_file
+
+		annotation SummarizationSetBy = Automatic
+
+	column _silver_hash
+		dataType: string
+		lineageTag: 216b28cb-2216-43ab-a4a0-fbe6aa04c18d
+		sourceLineageTag: _silver_hash
+		summarizeBy: none
+		sourceColumn: _silver_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	column _silver_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2908856a-14a5-4d67-acf4-68bf9e621359
+		sourceLineageTag: _silver_ts
+		summarizeBy: none
+		sourceColumn: _silver_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: 64d7f04a-830d-4af0-9d3e-a352c3e4c87c
+		sourceLineageTag: nom
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	column format
+		dataType: string
+		lineageTag: 60042fa6-ecbd-43fb-9b96-d68e52a47ee6
+		sourceLineageTag: format
+		summarizeBy: none
+		sourceColumn: format
+
+		annotation SummarizationSetBy = Automatic
+
+	column concept
+		dataType: string
+		lineageTag: 024b9e6c-a349-49c2-95d8-d5af444559e1
+		sourceLineageTag: concept
+		summarizeBy: none
+		sourceColumn: concept
+
+		annotation SummarizationSetBy = Automatic
+
+	column surface_m2
+		dataType: int64
+		formatString: 0
+		lineageTag: 85fca499-94e8-45ff-9164-7fd407f9f32b
+		sourceLineageTag: surface_m2
+		summarizeBy: sum
+		sourceColumn: surface_m2
+
+		annotation SummarizationSetBy = Automatic
+
+	column statut
+		dataType: string
+		lineageTag: 6552ce0a-39df-4a32-a404-357fa6ae27a5
+		sourceLineageTag: statut
+		summarizeBy: none
+		sourceColumn: statut
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: double
+		lineageTag: 2807d33f-472d-4757-9382-cbe909726404
+		sourceLineageTag: latitude
+		summarizeBy: sum
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitude
+		dataType: double
+		lineageTag: 26f9ff6a-66ae-4a5e-987a-46ac2f20e432
+		sourceLineageTag: longitude
+		summarizeBy: sum
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ca_total_chf
+		dataType: double
+		lineageTag: 7ece9b13-3938-4473-a896-092b9511d4ba
+		sourceLineageTag: ca_total_chf
+		summarizeBy: sum
+		sourceColumn: ca_total_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ca_moyen_hebdo
+		dataType: double
+		lineageTag: 408cff50-4731-40bf-83e1-d8300db4c8e9
+		sourceLineageTag: ca_moyen_hebdo
+		summarizeBy: sum
+		sourceColumn: ca_moyen_hebdo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column taux_captation_pct
+		dataType: double
+		lineageTag: b9bbcc60-eb07-40df-9445-6696c6d46983
+		sourceLineageTag: taux_captation_pct
+		summarizeBy: sum
+		sourceColumn: taux_captation_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column score_potentiel_implantation
+		dataType: double
+		lineageTag: b1c1d256-bc07-4863-8b54-8423a1c153b6
+		sourceLineageTag: score_potentiel_implantation
+		summarizeBy: sum
+		sourceColumn: score_potentiel_implantation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column recommandation
+		dataType: string
+		lineageTag: 76f22563-b099-49dc-a0ac-d51aa3a852fb
+		sourceLineageTag: recommandation
+		summarizeBy: none
+		sourceColumn: recommandation
+
+		annotation SummarizationSetBy = Automatic
+
+	column _gold_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 52740215-1f47-4b79-a09a-8eaa6ff2e021
+		sourceLineageTag: _gold_ts
+		summarizeBy: none
+		sourceColumn: _gold_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_geomarketing_scoring = entity
+		mode: directLake
+		source
+			entityName: gold_geomarketing_scoring
+			schemaName: dbo
+			expressionSource: 'DirectLake – RTL_WH_Gold'
+

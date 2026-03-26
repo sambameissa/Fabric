@@ -1,0 +1,170 @@
+table gold_product_mix_analysis
+	lineageTag: 520c521a-bda3-4161-9953-03f84d82a94c
+	sourceLineageTag: [dbo].[gold_product_mix_analysis]
+
+	column store_id
+		dataType: string
+		lineageTag: 3cf0a959-e6d2-4e2f-afaa-f77e46ae128d
+		sourceLineageTag: store_id
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column annee
+		dataType: int64
+		formatString: 0
+		lineageTag: 0f16b898-df64-4e30-9373-cce8675b02e8
+		sourceLineageTag: annee
+		summarizeBy: sum
+		sourceColumn: annee
+
+		annotation SummarizationSetBy = Automatic
+
+	column categorie
+		dataType: string
+		lineageTag: 647ff260-c199-4f2c-8690-ab5e7d06af50
+		sourceLineageTag: categorie
+		summarizeBy: none
+		sourceColumn: categorie
+
+		annotation SummarizationSetBy = Automatic
+
+	column famille
+		dataType: string
+		lineageTag: ffc27844-487d-482c-b3af-60704b913bdd
+		sourceLineageTag: famille
+		summarizeBy: none
+		sourceColumn: famille
+
+		annotation SummarizationSetBy = Automatic
+
+	column ca_chf
+		dataType: double
+		lineageTag: 47b7ae74-dfc2-4b17-ac1e-63fd4579745c
+		sourceLineageTag: ca_chf
+		summarizeBy: sum
+		sourceColumn: ca_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column marge_chf
+		dataType: double
+		lineageTag: 0c6fb4c2-d80d-4d54-949a-fa01423d01ad
+		sourceLineageTag: marge_chf
+		summarizeBy: sum
+		sourceColumn: marge_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nb_unites
+		dataType: int64
+		formatString: 0
+		lineageTag: c545d030-6435-4689-b35e-efd342b9e3cb
+		sourceLineageTag: nb_unites
+		summarizeBy: sum
+		sourceColumn: nb_unites
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_references
+		dataType: int64
+		formatString: 0
+		lineageTag: 4407ddc6-28f7-4cb2-991d-55183f1ccf16
+		sourceLineageTag: nb_references
+		summarizeBy: sum
+		sourceColumn: nb_references
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_bio
+		dataType: int64
+		formatString: 0
+		lineageTag: 7b24d367-63a5-4bcf-89a5-797078eecd10
+		sourceLineageTag: nb_bio
+		summarizeBy: sum
+		sourceColumn: nb_bio
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_local
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e044feb-63cd-4827-b735-e7ebe8fe3f92
+		sourceLineageTag: nb_local
+		summarizeBy: sum
+		sourceColumn: nb_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: a5a828b5-bf44-416a-9049-529707654dd3
+		sourceLineageTag: nom
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	column ville
+		dataType: string
+		lineageTag: 730da1db-4e45-4270-9ec5-d1bf2ef276cf
+		sourceLineageTag: ville
+		summarizeBy: none
+		sourceColumn: ville
+
+		annotation SummarizationSetBy = Automatic
+
+	column surface_m2
+		dataType: int64
+		formatString: 0
+		lineageTag: 692dcb82-cab1-4938-8b6c-51cfaf8637dc
+		sourceLineageTag: surface_m2
+		summarizeBy: sum
+		sourceColumn: surface_m2
+
+		annotation SummarizationSetBy = Automatic
+
+	column ca_par_m2
+		dataType: double
+		lineageTag: 75946136-708a-44d0-9f3c-b64bff388268
+		sourceLineageTag: ca_par_m2
+		summarizeBy: sum
+		sourceColumn: ca_par_m2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column taux_marge_pct
+		dataType: double
+		lineageTag: 2c915e58-ae09-4823-9b36-6da820763735
+		sourceLineageTag: taux_marge_pct
+		summarizeBy: sum
+		sourceColumn: taux_marge_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _gold_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 27cc4e48-f1ef-46b7-b56c-9c9399f582ab
+		sourceLineageTag: _gold_ts
+		summarizeBy: none
+		sourceColumn: _gold_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_product_mix_analysis = entity
+		mode: directLake
+		source
+			entityName: gold_product_mix_analysis
+			schemaName: dbo
+			expressionSource: 'DirectLake – RTL_WH_Gold'
+

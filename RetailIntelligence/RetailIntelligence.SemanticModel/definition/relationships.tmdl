@@ -1,0 +1,12 @@
+relationship 9d632164-0c74-73e5-552a-c17c50b63bff
+	fromColumn: gold_product_mix_analysis.store_id
+	toColumn: gold_geomarketing_scoring.store_id
+
+relationship 54d1fefe-2ba5-f379-88ff-36e0111e7e24
+	fromColumn: gold_store_performance_kpis.store_id
+	toColumn: gold_geomarketing_scoring.store_id
+
+relationship 65155e8b-b25d-4b69-0562-08aba9d089a3
+	fromColumn: gold_sales_trends.ville
+	toColumn: gold_geomarketing_scoring.ville
+

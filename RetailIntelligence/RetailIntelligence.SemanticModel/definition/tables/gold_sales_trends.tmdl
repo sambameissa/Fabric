@@ -1,0 +1,91 @@
+table gold_sales_trends
+	lineageTag: 778fc1e4-3e12-4976-a5bd-2b9262b52986
+	sourceLineageTag: [dbo].[gold_sales_trends]
+
+	column annee
+		dataType: int64
+		formatString: 0
+		lineageTag: 243885cf-84c3-48bd-8ae6-56b0eb874855
+		sourceLineageTag: annee
+		summarizeBy: sum
+		sourceColumn: annee
+
+		annotation SummarizationSetBy = Automatic
+
+	column mois
+		dataType: int64
+		formatString: 0
+		lineageTag: 73c4b043-282c-4860-968d-c4a6aff638c1
+		sourceLineageTag: mois
+		summarizeBy: sum
+		sourceColumn: mois
+
+		annotation SummarizationSetBy = Automatic
+
+	column ville
+		dataType: string
+		lineageTag: 8a3e223f-b874-4bcc-aedf-335b28b0df62
+		sourceLineageTag: ville
+		summarizeBy: none
+		sourceColumn: ville
+
+		annotation SummarizationSetBy = Automatic
+
+	column format
+		dataType: string
+		lineageTag: f3531c00-e2d3-4a5d-a7f8-fabc75886c90
+		sourceLineageTag: format
+		summarizeBy: none
+		sourceColumn: format
+
+		annotation SummarizationSetBy = Automatic
+
+	column ca_chf
+		dataType: double
+		lineageTag: 4209b84a-4450-49b6-8b40-65f17082756e
+		sourceLineageTag: ca_chf
+		summarizeBy: sum
+		sourceColumn: ca_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nb_magasins
+		dataType: int64
+		formatString: 0
+		lineageTag: fea996d6-7de1-4b95-a4bc-7fcecadbbf14
+		sourceLineageTag: nb_magasins
+		summarizeBy: sum
+		sourceColumn: nb_magasins
+
+		annotation SummarizationSetBy = Automatic
+
+	column ca_moyen_par_magasin
+		dataType: double
+		lineageTag: 390ced4b-1813-44ad-8135-4899df754ff8
+		sourceLineageTag: ca_moyen_par_magasin
+		summarizeBy: sum
+		sourceColumn: ca_moyen_par_magasin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _gold_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7dc7d6fb-b39e-4572-9017-abc629c2b1a0
+		sourceLineageTag: _gold_ts
+		summarizeBy: none
+		sourceColumn: _gold_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_sales_trends = entity
+		mode: directLake
+		source
+			entityName: gold_sales_trends
+			schemaName: dbo
+			expressionSource: 'DirectLake – RTL_WH_Gold'
+

@@ -1,0 +1,221 @@
+table gold_store_performance_kpis
+	lineageTag: 4f8ceb7b-8ac7-4b9e-a815-09136fb7d950
+	sourceLineageTag: [dbo].[gold_store_performance_kpis]
+
+	column store_id
+		dataType: string
+		lineageTag: 60b3d37a-c8ea-4774-8dff-61c7839a86e4
+		sourceLineageTag: store_id
+		summarizeBy: none
+		sourceColumn: store_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column annee
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c602bdc-5aa5-47d3-9889-23995ac3ae41
+		sourceLineageTag: annee
+		summarizeBy: sum
+		sourceColumn: annee
+
+		annotation SummarizationSetBy = Automatic
+
+	column mois
+		dataType: int64
+		formatString: 0
+		lineageTag: 9950520a-936b-4044-a885-d5fdcc3f7970
+		sourceLineageTag: mois
+		summarizeBy: sum
+		sourceColumn: mois
+
+		annotation SummarizationSetBy = Automatic
+
+	column ca_chf
+		dataType: double
+		lineageTag: 008b9fd1-ca0a-49cc-935d-468ec7980206
+		sourceLineageTag: ca_chf
+		summarizeBy: sum
+		sourceColumn: ca_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column marge_chf
+		dataType: double
+		lineageTag: 38559cf4-a64b-468b-9aa7-a7fdf5101ae8
+		sourceLineageTag: marge_chf
+		summarizeBy: sum
+		sourceColumn: marge_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nb_unites
+		dataType: int64
+		formatString: 0
+		lineageTag: a1f2bcde-b7ac-41fb-924d-f79f6660411a
+		sourceLineageTag: nb_unites
+		summarizeBy: sum
+		sourceColumn: nb_unites
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_transactions
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d2994af-3a4d-481c-9706-a4641657cc3e
+		sourceLineageTag: nb_transactions
+		summarizeBy: sum
+		sourceColumn: nb_transactions
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_references
+		dataType: int64
+		formatString: 0
+		lineageTag: ac71c216-5008-42bc-bc69-3e13eacd4f94
+		sourceLineageTag: nb_references
+		summarizeBy: sum
+		sourceColumn: nb_references
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_ruptures
+		dataType: int64
+		formatString: 0
+		lineageTag: 15e52d08-d677-453c-88c0-9597e4764861
+		sourceLineageTag: nb_ruptures
+		summarizeBy: sum
+		sourceColumn: nb_ruptures
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_promos
+		dataType: int64
+		formatString: 0
+		lineageTag: 985ad33a-f80c-49d5-9699-2447c15b5ea9
+		sourceLineageTag: nb_promos
+		summarizeBy: sum
+		sourceColumn: nb_promos
+
+		annotation SummarizationSetBy = Automatic
+
+	column panier_moyen_chf
+		dataType: double
+		lineageTag: f685fbfb-49ac-425b-a6b5-2cb8308abd6f
+		sourceLineageTag: panier_moyen_chf
+		summarizeBy: sum
+		sourceColumn: panier_moyen_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column taux_marge_pct
+		dataType: double
+		lineageTag: f4f658f2-6307-494a-a8c3-012da4169171
+		sourceLineageTag: taux_marge_pct
+		summarizeBy: sum
+		sourceColumn: taux_marge_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column taux_rupture_pct
+		dataType: double
+		lineageTag: 701a6384-16c0-4055-ba52-71f9ec63d5a4
+		sourceLineageTag: taux_rupture_pct
+		summarizeBy: sum
+		sourceColumn: taux_rupture_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nom
+		dataType: string
+		lineageTag: eda98e0e-2871-44cb-a5d4-5cb2b355e5ff
+		sourceLineageTag: nom
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	column ville
+		dataType: string
+		lineageTag: 713aa89e-fd37-41f0-93f8-1af5aca48f20
+		sourceLineageTag: ville
+		summarizeBy: none
+		sourceColumn: ville
+
+		annotation SummarizationSetBy = Automatic
+
+	column format
+		dataType: string
+		lineageTag: 52428e86-e5b9-41c7-93e2-bdab6297a1eb
+		sourceLineageTag: format
+		summarizeBy: none
+		sourceColumn: format
+
+		annotation SummarizationSetBy = Automatic
+
+	column concept
+		dataType: string
+		lineageTag: 9a048c65-78e2-4952-8a09-7f52fad0e76d
+		sourceLineageTag: concept
+		summarizeBy: none
+		sourceColumn: concept
+
+		annotation SummarizationSetBy = Automatic
+
+	column surface_m2
+		dataType: int64
+		formatString: 0
+		lineageTag: f8cd49fa-f48b-4c15-973f-1610bd6211a0
+		sourceLineageTag: surface_m2
+		summarizeBy: sum
+		sourceColumn: surface_m2
+
+		annotation SummarizationSetBy = Automatic
+
+	column statut
+		dataType: string
+		lineageTag: 8bfee8de-acd4-491e-b8d5-354c46799254
+		sourceLineageTag: statut
+		summarizeBy: none
+		sourceColumn: statut
+
+		annotation SummarizationSetBy = Automatic
+
+	column ca_par_m2
+		dataType: double
+		lineageTag: c5a1ea7a-10aa-48d4-8bdb-06faa6fc1bb2
+		sourceLineageTag: ca_par_m2
+		summarizeBy: sum
+		sourceColumn: ca_par_m2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _gold_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dd31d81f-ca4a-4dde-b89a-22dc104ac262
+		sourceLineageTag: _gold_ts
+		summarizeBy: none
+		sourceColumn: _gold_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold_store_performance_kpis = entity
+		mode: directLake
+		source
+			entityName: gold_store_performance_kpis
+			schemaName: dbo
+			expressionSource: 'DirectLake – RTL_WH_Gold'
+

@@ -1,0 +1,1370 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "gold_geomarketing_scoring",
+        "sourceLineageTag": "[dbo].[gold_geomarketing_scoring]",
+        "columns": [
+          {
+            "name": "store_id",
+            "dataType": "string",
+            "sourceColumn": "store_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "store_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ville",
+            "dataType": "string",
+            "sourceColumn": "ville",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ville",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "population_primaire",
+            "dataType": "int64",
+            "sourceColumn": "population_primaire",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "population_primaire",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "population_secondaire",
+            "dataType": "int64",
+            "sourceColumn": "population_secondaire",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "population_secondaire",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "revenu_moyen_chf",
+            "dataType": "int64",
+            "sourceColumn": "revenu_moyen_chf",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "revenu_moyen_chf",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "pct_familles",
+            "dataType": "double",
+            "sourceColumn": "pct_familles",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "pct_familles",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "pct_seniors",
+            "dataType": "double",
+            "sourceColumn": "pct_seniors",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "pct_seniors",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "pct_actifs",
+            "dataType": "double",
+            "sourceColumn": "pct_actifs",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "pct_actifs",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "indice_pouvoir_achat",
+            "dataType": "double",
+            "sourceColumn": "indice_pouvoir_achat",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "indice_pouvoir_achat",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "nb_concurrents_directs",
+            "dataType": "int64",
+            "sourceColumn": "nb_concurrents_directs",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "nb_concurrents_directs",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nb_concurrents_indirects",
+            "dataType": "int64",
+            "sourceColumn": "nb_concurrents_indirects",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "nb_concurrents_indirects",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "part_de_marche_estimee_pct",
+            "dataType": "double",
+            "sourceColumn": "part_de_marche_estimee_pct",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "part_de_marche_estimee_pct",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "potentiel_ca_zone_mchf",
+            "dataType": "double",
+            "sourceColumn": "potentiel_ca_zone_mchf",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "potentiel_ca_zone_mchf",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "indice_attractivite",
+            "dataType": "double",
+            "sourceColumn": "indice_attractivite",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "indice_attractivite",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "flux_pietons_semaine",
+            "dataType": "int64",
+            "sourceColumn": "flux_pietons_semaine",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "flux_pietons_semaine",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "accessibilite_score",
+            "dataType": "double",
+            "sourceColumn": "accessibilite_score",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "accessibilite_score",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "_bronze_ts",
+            "dataType": "dateTime",
+            "sourceColumn": "_bronze_ts",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "_bronze_ts",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "_source_system",
+            "dataType": "string",
+            "sourceColumn": "_source_system",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "_source_system",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "_source_file",
+            "dataType": "string",
+            "sourceColumn": "_source_file",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "_source_file",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "_silver_hash",
+            "dataType": "string",
+            "sourceColumn": "_silver_hash",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "_silver_hash",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "_silver_ts",
+            "dataType": "dateTime",
+            "sourceColumn": "_silver_ts",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "_silver_ts",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nom",
+            "dataType": "string",
+            "sourceColumn": "nom",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "nom",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "format",
+            "dataType": "string",
+            "sourceColumn": "format",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "format",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "concept",
+            "dataType": "string",
+            "sourceColumn": "concept",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "concept",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "surface_m2",
+            "dataType": "int64",
+            "sourceColumn": "surface_m2",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "surface_m2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "statut",
+            "dataType": "string",
+            "sourceColumn": "statut",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "statut",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "latitude",
+            "dataType": "double",
+            "sourceColumn": "latitude",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "latitude",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "longitude",
+            "dataType": "double",
+            "sourceColumn": "longitude",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "longitude",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ca_total_chf",
+            "dataType": "double",
+            "sourceColumn": "ca_total_chf",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "ca_total_chf",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "ca_moyen_hebdo",
+            "dataType": "double",
+            "sourceColumn": "ca_moyen_hebdo",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "ca_moyen_hebdo",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "taux_captation_pct",
+            "dataType": "double",
+            "sourceColumn": "taux_captation_pct",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "taux_captation_pct",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "score_potentiel_implantation",
+            "dataType": "double",
+            "sourceColumn": "score_potentiel_implantation",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "score_potentiel_implantation",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "recommandation",
+            "dataType": "string",
+            "sourceColumn": "recommandation",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "recommandation",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "_gold_ts",
+            "dataType": "dateTime",
+            "sourceColumn": "_gold_ts",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "_gold_ts",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "gold_geomarketing_scoring",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "gold_product_mix_analysis",
+        "sourceLineageTag": "[dbo].[gold_product_mix_analysis]",
+        "columns": [
+          {
+            "name": "store_id",
+            "dataType": "string",
+            "sourceColumn": "store_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "store_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "annee",
+            "dataType": "int64",
+            "sourceColumn": "annee",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "annee",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "categorie",
+            "dataType": "string",
+            "sourceColumn": "categorie",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "categorie",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "famille",
+            "dataType": "string",
+            "sourceColumn": "famille",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "famille",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ca_chf",
+            "dataType": "double",
+            "sourceColumn": "ca_chf",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "ca_chf",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "marge_chf",
+            "dataType": "double",
+            "sourceColumn": "marge_chf",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "marge_chf",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "nb_unites",
+            "dataType": "int64",
+            "sourceColumn": "nb_unites",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "nb_unites",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nb_references",
+            "dataType": "int64",
+            "sourceColumn": "nb_references",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "nb_references",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nb_bio",
+            "dataType": "int64",
+            "sourceColumn": "nb_bio",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "nb_bio",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nb_local",
+            "dataType": "int64",
+            "sourceColumn": "nb_local",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "nb_local",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nom",
+            "dataType": "string",
+            "sourceColumn": "nom",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "nom",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ville",
+            "dataType": "string",
+            "sourceColumn": "ville",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ville",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "surface_m2",
+            "dataType": "int64",
+            "sourceColumn": "surface_m2",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "surface_m2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ca_par_m2",
+            "dataType": "double",
+            "sourceColumn": "ca_par_m2",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "ca_par_m2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "taux_marge_pct",
+            "dataType": "double",
+            "sourceColumn": "taux_marge_pct",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "taux_marge_pct",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "_gold_ts",
+            "dataType": "dateTime",
+            "sourceColumn": "_gold_ts",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "_gold_ts",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "gold_product_mix_analysis",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "gold_sales_trends",
+        "sourceLineageTag": "[dbo].[gold_sales_trends]",
+        "columns": [
+          {
+            "name": "annee",
+            "dataType": "int64",
+            "sourceColumn": "annee",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "annee",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "mois",
+            "dataType": "int64",
+            "sourceColumn": "mois",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "mois",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ville",
+            "dataType": "string",
+            "sourceColumn": "ville",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ville",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "format",
+            "dataType": "string",
+            "sourceColumn": "format",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "format",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ca_chf",
+            "dataType": "double",
+            "sourceColumn": "ca_chf",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "ca_chf",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "nb_magasins",
+            "dataType": "int64",
+            "sourceColumn": "nb_magasins",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "nb_magasins",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ca_moyen_par_magasin",
+            "dataType": "double",
+            "sourceColumn": "ca_moyen_par_magasin",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "ca_moyen_par_magasin",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "_gold_ts",
+            "dataType": "dateTime",
+            "sourceColumn": "_gold_ts",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "_gold_ts",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "gold_sales_trends",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "gold_store_performance_kpis",
+        "sourceLineageTag": "[dbo].[gold_store_performance_kpis]",
+        "columns": [
+          {
+            "name": "store_id",
+            "dataType": "string",
+            "sourceColumn": "store_id",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "store_id",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "annee",
+            "dataType": "int64",
+            "sourceColumn": "annee",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "annee",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "mois",
+            "dataType": "int64",
+            "sourceColumn": "mois",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "mois",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ca_chf",
+            "dataType": "double",
+            "sourceColumn": "ca_chf",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "ca_chf",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "marge_chf",
+            "dataType": "double",
+            "sourceColumn": "marge_chf",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "marge_chf",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "nb_unites",
+            "dataType": "int64",
+            "sourceColumn": "nb_unites",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "nb_unites",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nb_transactions",
+            "dataType": "int64",
+            "sourceColumn": "nb_transactions",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "nb_transactions",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nb_references",
+            "dataType": "int64",
+            "sourceColumn": "nb_references",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "nb_references",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nb_ruptures",
+            "dataType": "int64",
+            "sourceColumn": "nb_ruptures",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "nb_ruptures",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "nb_promos",
+            "dataType": "int64",
+            "sourceColumn": "nb_promos",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "nb_promos",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "panier_moyen_chf",
+            "dataType": "double",
+            "sourceColumn": "panier_moyen_chf",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "panier_moyen_chf",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "taux_marge_pct",
+            "dataType": "double",
+            "sourceColumn": "taux_marge_pct",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "taux_marge_pct",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "taux_rupture_pct",
+            "dataType": "double",
+            "sourceColumn": "taux_rupture_pct",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "taux_rupture_pct",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "nom",
+            "dataType": "string",
+            "sourceColumn": "nom",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "nom",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ville",
+            "dataType": "string",
+            "sourceColumn": "ville",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ville",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "format",
+            "dataType": "string",
+            "sourceColumn": "format",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "format",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "concept",
+            "dataType": "string",
+            "sourceColumn": "concept",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "concept",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "surface_m2",
+            "dataType": "int64",
+            "sourceColumn": "surface_m2",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "surface_m2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "statut",
+            "dataType": "string",
+            "sourceColumn": "statut",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "statut",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ca_par_m2",
+            "dataType": "double",
+            "sourceColumn": "ca_par_m2",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "ca_par_m2",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "_gold_ts",
+            "dataType": "dateTime",
+            "sourceColumn": "_gold_ts",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "_gold_ts",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "gold_store_performance_kpis",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}
