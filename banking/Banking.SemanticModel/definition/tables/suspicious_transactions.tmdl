@@ -1,0 +1,219 @@
+table suspicious_transactions
+	lineageTag: d49dde34-e428-4267-b436-32fd9eb59254
+	sourceLineageTag: [dbo].[suspicious_transactions]
+
+	column client_id
+		dataType: string
+		lineageTag: bf25fe5e-4292-44c4-92a9-5f931d5231ee
+		sourceLineageTag: client_id
+		summarizeBy: none
+		sourceColumn: client_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_id
+		dataType: string
+		lineageTag: d1ab3437-ff85-45ac-af61-102d1d61a936
+		sourceLineageTag: transaction_id
+		summarizeBy: none
+		sourceColumn: transaction_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 49dec4e8-432c-4e10-acde-dec3ef5bad7b
+		sourceLineageTag: date
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+	column heure
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 190c7aad-261c-4931-a566-e4ff86b67756
+		sourceLineageTag: heure
+		summarizeBy: none
+		sourceColumn: heure
+
+		annotation SummarizationSetBy = Automatic
+
+	column montant
+		dataType: double
+		lineageTag: 06e1addd-619d-4da8-84ff-1998b746bfa3
+		sourceLineageTag: montant
+		summarizeBy: sum
+		sourceColumn: montant
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column devise
+		dataType: string
+		lineageTag: 051ad2f5-8d94-4fb0-8546-6357dbdba748
+		sourceLineageTag: devise
+		summarizeBy: none
+		sourceColumn: devise
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: d46b61f0-bf16-40b3-8239-844365ba95ee
+		sourceLineageTag: type
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column canal
+		dataType: string
+		lineageTag: b22b1fff-5fd9-40cf-8f76-f13e8464b74e
+		sourceLineageTag: canal
+		summarizeBy: none
+		sourceColumn: canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column statut
+		dataType: string
+		lineageTag: 13c47168-9347-4cbc-b1db-003e2ce76725
+		sourceLineageTag: statut
+		summarizeBy: none
+		sourceColumn: statut
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_suspicious
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c1e497a-1d95-4dd7-b117-ddad4ce4708d
+		sourceLineageTag: is_suspicious
+		summarizeBy: sum
+		sourceColumn: is_suspicious
+
+		annotation SummarizationSetBy = Automatic
+
+	column _bronze_ingestion_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 40b47f58-6f51-48fb-b45e-d5c60dea2dd0
+		sourceLineageTag: _bronze_ingestion_ts
+		summarizeBy: none
+		sourceColumn: _bronze_ingestion_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	column _bronze_source_system
+		dataType: string
+		lineageTag: 6b9280c9-9a2d-486d-8a69-4c1711f84bf8
+		sourceLineageTag: _bronze_source_system
+		summarizeBy: none
+		sourceColumn: _bronze_source_system
+
+		annotation SummarizationSetBy = Automatic
+
+	column _bronze_source_file
+		dataType: string
+		lineageTag: b71c9821-3923-4df1-b0c8-2769175d8556
+		sourceLineageTag: _bronze_source_file
+		summarizeBy: none
+		sourceColumn: _bronze_source_file
+
+		annotation SummarizationSetBy = Automatic
+
+	column _bronze_batch_id
+		dataType: string
+		lineageTag: 3d6892e9-2353-40a8-aaa0-0d3d03124d2e
+		sourceLineageTag: _bronze_batch_id
+		summarizeBy: none
+		sourceColumn: _bronze_batch_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column _silver_row_hash
+		dataType: string
+		lineageTag: 1460ddb9-6fc1-435f-8897-223231597de9
+		sourceLineageTag: _silver_row_hash
+		summarizeBy: none
+		sourceColumn: _silver_row_hash
+
+		annotation SummarizationSetBy = Automatic
+
+	column _silver_transformed_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: eec7a350-4f75-4a87-a3a5-e338a0d403fa
+		sourceLineageTag: _silver_transformed_ts
+		summarizeBy: none
+		sourceColumn: _silver_transformed_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: 0004bf7c-9b63-442c-b3e7-9c44c1e691f1
+		sourceLineageTag: nom
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	column prenom
+		dataType: string
+		lineageTag: ad5b91c4-40ef-4a40-a8ed-912019c674d7
+		sourceLineageTag: prenom
+		summarizeBy: none
+		sourceColumn: prenom
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: 8dcef718-0da1-469e-a451-e0c82e7955fc
+		sourceLineageTag: segment
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 869a8348-e1ee-4d2f-80f5-ec75226a6408
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_score
+		dataType: double
+		lineageTag: c567c79d-1bc3-4187-91f2-e2bc3c38e61f
+		sourceLineageTag: risk_score
+		summarizeBy: sum
+		sourceColumn: risk_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _gold_built_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 29d5df68-54e4-4a1b-80c7-a0e62dc2a5ba
+		sourceLineageTag: _gold_built_ts
+		summarizeBy: none
+		sourceColumn: _gold_built_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition suspicious_transactions = entity
+		mode: directLake
+		source
+			entityName: suspicious_transactions
+			schemaName: dbo
+			expressionSource: 'DirectLake – WH_Banking'
+

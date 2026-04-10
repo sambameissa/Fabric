@@ -1,0 +1,187 @@
+table client_kpis
+	lineageTag: 4e4d2410-4181-429b-bea6-56106f975593
+	sourceLineageTag: [dbo].[client_kpis]
+
+	column client_id
+		dataType: string
+		lineageTag: 02b8edd4-479f-4fe7-a1e1-ce48afae2e40
+		sourceLineageTag: client_id
+		summarizeBy: none
+		sourceColumn: client_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom
+		dataType: string
+		lineageTag: 5c31cf22-5f5d-4e8b-85ff-d9c1e4e1a788
+		sourceLineageTag: nom
+		summarizeBy: none
+		sourceColumn: nom
+
+		annotation SummarizationSetBy = Automatic
+
+	column prenom
+		dataType: string
+		lineageTag: 596eb103-251c-4490-b182-af7e03c52439
+		sourceLineageTag: prenom
+		summarizeBy: none
+		sourceColumn: prenom
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: cca0425b-e41f-4d6a-b966-3fe3f7cc0631
+		sourceLineageTag: segment
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: d5e42960-3b65-44b9-b32c-4739a64e2e92
+		sourceLineageTag: city
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_score
+		dataType: double
+		lineageTag: 8a79d9a0-78dc-4985-89cd-52f70aeece9b
+		sourceLineageTag: risk_score
+		summarizeBy: sum
+		sourceColumn: risk_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column statut
+		dataType: string
+		lineageTag: 43dae823-dead-445a-9eb6-f3fd036f9741
+		sourceLineageTag: statut
+		summarizeBy: none
+		sourceColumn: statut
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_transactions
+		dataType: int64
+		formatString: 0
+		lineageTag: 35c53142-2a22-4911-a287-44dcf8b5c3ad
+		sourceLineageTag: nb_transactions
+		summarizeBy: sum
+		sourceColumn: nb_transactions
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_montant_chf
+		dataType: double
+		lineageTag: 0b51ee58-1a8f-47d5-af5b-fe654da13d30
+		sourceLineageTag: total_montant_chf
+		summarizeBy: sum
+		sourceColumn: total_montant_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_montant_chf
+		dataType: double
+		lineageTag: 1363a645-e132-4d16-bce8-4f0a68196a67
+		sourceLineageTag: avg_montant_chf
+		summarizeBy: sum
+		sourceColumn: avg_montant_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_transaction_chf
+		dataType: double
+		lineageTag: 34e91639-ee9d-4087-b500-bef4475dea20
+		sourceLineageTag: max_transaction_chf
+		summarizeBy: sum
+		sourceColumn: max_transaction_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column last_tx_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e090d154-cc56-4e97-84fc-5dc940793878
+		sourceLineageTag: last_tx_date
+		summarizeBy: none
+		sourceColumn: last_tx_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_since_last_tx
+		dataType: int64
+		formatString: 0
+		lineageTag: 18b7fa27-19c8-46b4-a954-8f281c53336e
+		sourceLineageTag: days_since_last_tx
+		summarizeBy: sum
+		sourceColumn: days_since_last_tx
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_suspicious_tx
+		dataType: int64
+		formatString: 0
+		lineageTag: 553f9365-f8f5-4760-a28c-4111ad670201
+		sourceLineageTag: nb_suspicious_tx
+		summarizeBy: sum
+		sourceColumn: nb_suspicious_tx
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_types_utilises
+		dataType: int64
+		formatString: 0
+		lineageTag: 58d1bc82-8d88-4c28-9725-2afc75bf889d
+		sourceLineageTag: nb_types_utilises
+		summarizeBy: sum
+		sourceColumn: nb_types_utilises
+
+		annotation SummarizationSetBy = Automatic
+
+	column statut_activite
+		dataType: string
+		lineageTag: 7ff85cd2-fcc0-493c-b3dd-038599386261
+		sourceLineageTag: statut_activite
+		summarizeBy: none
+		sourceColumn: statut_activite
+
+		annotation SummarizationSetBy = Automatic
+
+	column risque_fraude
+		dataType: string
+		lineageTag: 90a2068f-c8fe-4303-bf49-91dc32a8be11
+		sourceLineageTag: risque_fraude
+		summarizeBy: none
+		sourceColumn: risque_fraude
+
+		annotation SummarizationSetBy = Automatic
+
+	column _gold_built_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ee11c820-c2de-4788-ae43-c6627d527d16
+		sourceLineageTag: _gold_built_ts
+		summarizeBy: none
+		sourceColumn: _gold_built_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition client_kpis = entity
+		mode: directLake
+		source
+			entityName: client_kpis
+			schemaName: dbo
+			expressionSource: 'DirectLake – WH_Banking'
+

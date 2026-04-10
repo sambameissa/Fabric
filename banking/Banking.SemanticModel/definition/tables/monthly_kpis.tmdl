@@ -1,0 +1,120 @@
+table monthly_kpis
+	lineageTag: a3822023-b85e-4724-afbf-38a269a912f2
+	sourceLineageTag: [dbo].[monthly_kpis]
+
+	column mois
+		dataType: string
+		lineageTag: 24baf117-6313-4f67-8de9-cfd163ce1c45
+		sourceLineageTag: mois
+		summarizeBy: none
+		sourceColumn: mois
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: d6ebceab-3da4-4602-98db-3bf348b79811
+		sourceLineageTag: type
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column canal
+		dataType: string
+		lineageTag: 81d972f2-ce66-4ae6-a76b-dc1f71bc8f78
+		sourceLineageTag: canal
+		summarizeBy: none
+		sourceColumn: canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column devise
+		dataType: string
+		lineageTag: f4f40608-dad1-42e9-9ae8-2028ba3c25c0
+		sourceLineageTag: devise
+		summarizeBy: none
+		sourceColumn: devise
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_transactions
+		dataType: int64
+		formatString: 0
+		lineageTag: 0777988f-1a4e-4859-bac1-e93dcd43df1b
+		sourceLineageTag: nb_transactions
+		summarizeBy: sum
+		sourceColumn: nb_transactions
+
+		annotation SummarizationSetBy = Automatic
+
+	column volume_chf
+		dataType: double
+		lineageTag: 16f8c153-5009-4392-b2fb-eed5f71ecd9f
+		sourceLineageTag: volume_chf
+		summarizeBy: sum
+		sourceColumn: volume_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_montant_chf
+		dataType: double
+		lineageTag: 5f122812-905c-4cd4-a816-7d30191b6e78
+		sourceLineageTag: avg_montant_chf
+		summarizeBy: sum
+		sourceColumn: avg_montant_chf
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nb_refuses
+		dataType: int64
+		formatString: 0
+		lineageTag: 92437026-9073-472e-b56f-2c4459e5a776
+		sourceLineageTag: nb_refuses
+		summarizeBy: sum
+		sourceColumn: nb_refuses
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_suspects
+		dataType: int64
+		formatString: 0
+		lineageTag: 95dcc7a9-f115-4839-a8cf-6fdb33e917a3
+		sourceLineageTag: nb_suspects
+		summarizeBy: sum
+		sourceColumn: nb_suspects
+
+		annotation SummarizationSetBy = Automatic
+
+	column taux_refus_pct
+		dataType: double
+		lineageTag: 23a4f041-090b-4e39-9db1-aa82d48fd4f0
+		sourceLineageTag: taux_refus_pct
+		summarizeBy: sum
+		sourceColumn: taux_refus_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _gold_built_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2f017331-e15d-486a-934a-655b56650eeb
+		sourceLineageTag: _gold_built_ts
+		summarizeBy: none
+		sourceColumn: _gold_built_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition monthly_kpis = entity
+		mode: directLake
+		source
+			entityName: monthly_kpis
+			schemaName: dbo
+			expressionSource: 'DirectLake – WH_Banking'
+

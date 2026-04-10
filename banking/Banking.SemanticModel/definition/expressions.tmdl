@@ -1,0 +1,9 @@
+expression 'DirectLake – WH_Banking' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/833a6822-5e38-4c83-97a7-16269b6ecd1a/b0337efc-e197-41f6-a77d-59fa3d152e97", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: ad12fff9-479d-462a-a61d-dd7b8cdd8e22
+
+	annotation PBI_IncludeFutureArtifacts = False
+
